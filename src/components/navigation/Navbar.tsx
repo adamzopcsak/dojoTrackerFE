@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import HomeLink from "./HomeLink";
 import SignIn from "../user-management/SignIn";
+import LogOut from "../user-management/LogOut";
 
 const StyledNavBar = styled.nav`
     width: 80%;
@@ -20,7 +21,7 @@ const Navbar = (props: Props) => {
     return (
         <StyledNavBar>
             <HomeLink />
-            <SignIn />
+            {localStorage.getItem("userData") ? <LogOut /> : <SignIn />}
         </StyledNavBar>
     );
 };

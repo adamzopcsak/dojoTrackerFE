@@ -23,7 +23,7 @@ const SignIn = (props: Props) => {
     const responseGoogle = (response: any) => {
         const res = response.profileObj;
 
-        console.log(res);
+        localStorage.setItem("userData", JSON.stringify(res));
     };
 
     return (
@@ -37,7 +37,7 @@ const SignIn = (props: Props) => {
                     </StyledLoginButton>
                 )}
                 onSuccess={responseGoogle}
-                onFailure={responseGoogle}
+                onFailure={() => console.log("?????????????")}
                 isSignedIn={true}
             />
         </div>
