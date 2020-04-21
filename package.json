@@ -1,6 +1,6 @@
 {
     "name": "dojotracker",
-    "homepage": "http://gaKoltai.github.io/dojoTrackerFE",
+    "homepage": "https://gakoltai.github.io/dojoTrackerFE",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -24,9 +24,9 @@
         "typescript": "^3.7.5"
     },
     "scripts": {
+        "start": "react-scripts start",
         "predeploy": "npm run build",
         "deploy": "gh-pages -d build",
-        "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
