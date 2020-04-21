@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import GoogleLogin from "react-google-login";
 import { EmptyButton } from "../styled-components/Reusables";
+import { UserContext } from "../context/UserContextProvider";
 
 interface Props {}
 
 const SignIn = (props: Props) => {
+    const [user, setUser] = useContext(UserContext);
+
     const responseGoogle = (response: any) => {
         const res = response.profileObj;
 
         localStorage.setItem("userData", JSON.stringify(res));
+
+        const dummyUser = require("../../static/test data/users.json");
+
+        setUser(dummyUser);
     };
 
     return (
