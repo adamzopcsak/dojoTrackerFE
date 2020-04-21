@@ -7,10 +7,13 @@ const StyledNavLinks = styled.ul`
 
     & li {
         float: left;
-        padding: 0 2rem;
+        margin: 0 2rem;
+        padding: 0 0.5rem;
+        letter-spacing: 0.2rem;
 
         &:hover {
-            text-decoration: underline;
+            border-bottom: 2px solid black;
+            padding-bottom: 6px;
             cursor: pointer;
         }
     }
