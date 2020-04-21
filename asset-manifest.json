@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/dojoTrackerFE/static/css/main.5c65982c.chunk.css",
-    "main.js": "/dojoTrackerFE/static/js/main.083a2bae.chunk.js",
-    "main.js.map": "/dojoTrackerFE/static/js/main.083a2bae.chunk.js.map",
+    "main.js": "/dojoTrackerFE/static/js/main.7355e3ff.chunk.js",
+    "main.js.map": "/dojoTrackerFE/static/js/main.7355e3ff.chunk.js.map",
     "runtime-main.js": "/dojoTrackerFE/static/js/runtime-main.9f020d41.js",
     "runtime-main.js.map": "/dojoTrackerFE/static/js/runtime-main.9f020d41.js.map",
-    "static/js/2.daa247fb.chunk.js": "/dojoTrackerFE/static/js/2.daa247fb.chunk.js",
-    "static/js/2.daa247fb.chunk.js.map": "/dojoTrackerFE/static/js/2.daa247fb.chunk.js.map",
+    "static/js/2.1242f940.chunk.js": "/dojoTrackerFE/static/js/2.1242f940.chunk.js",
+    "static/js/2.1242f940.chunk.js.map": "/dojoTrackerFE/static/js/2.1242f940.chunk.js.map",
     "index.html": "/dojoTrackerFE/index.html",
-    "precache-manifest.4feec4399753570b7316d0bca6f9729f.js": "/dojoTrackerFE/precache-manifest.4feec4399753570b7316d0bca6f9729f.js",
+    "precache-manifest.bc576b58b72081bf5c31129516d7e637.js": "/dojoTrackerFE/precache-manifest.bc576b58b72081bf5c31129516d7e637.js",
     "service-worker.js": "/dojoTrackerFE/service-worker.js",
     "static/css/main.5c65982c.chunk.css.map": "/dojoTrackerFE/static/css/main.5c65982c.chunk.css.map",
-    "static/js/2.daa247fb.chunk.js.LICENSE.txt": "/dojoTrackerFE/static/js/2.daa247fb.chunk.js.LICENSE.txt",
+    "static/js/2.1242f940.chunk.js.LICENSE.txt": "/dojoTrackerFE/static/js/2.1242f940.chunk.js.LICENSE.txt",
     "static/media/codecool_logo.png": "/dojoTrackerFE/static/media/codecool_logo.1e0b5a33.png"
   },
   "entrypoints": [
     "static/js/runtime-main.9f020d41.js",
-    "static/js/2.daa247fb.chunk.js",
+    "static/js/2.1242f940.chunk.js",
     "static/css/main.5c65982c.chunk.css",
-    "static/js/main.083a2bae.chunk.js"
+    "static/js/main.7355e3ff.chunk.js"
   ]
 }
