@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import styled from "styled-components";
 import HomeLink from "./HomeLink";
 import SignIn from "../user-management/SignIn";
@@ -10,7 +10,7 @@ const StyledNavBar = styled.nav`
     max-width: 100%;
     height: 8vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     z-index: 1;
     color: black;
@@ -24,8 +24,15 @@ const Navbar = (props: Props) => {
         <StyledNavBar>
             <HomeLink />
 
-            <NavLinks />
-            {localStorage.getItem("userData") ? <LogOut /> : <SignIn />}
+            {localStorage.getItem("userData") ? (
+                <Fragment>
+                    {""}
+                    <NavLinks />
+                    <LogOut />
+                </Fragment>
+            ) : (
+                <SignIn />
+            )}
         </StyledNavBar>
     );
 };
