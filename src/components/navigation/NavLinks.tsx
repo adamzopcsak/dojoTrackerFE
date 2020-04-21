@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { CustomLink } from "../styled-components/Reusables";
 
 const StyledNavLinks = styled.ul`
     text-decoration: none;
@@ -18,7 +19,7 @@ const StyledNavLinks = styled.ul`
         }
     }
 
-    @media (max-width: 641px) {
+    @media (max-width: 768px) {
         display: none;
     }
 `;
@@ -28,7 +29,9 @@ interface Props {}
 const NavLinks = (props: Props) => {
     return (
         <StyledNavLinks>
-            <li>Dojos</li>
+            <li>
+                <CustomLink to="/dojos">Dojos</CustomLink>
+            </li>
             <li>Ranking</li>
         </StyledNavLinks>
     );
