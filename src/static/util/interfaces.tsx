@@ -4,3 +4,10 @@ export interface IBasicDojoInfo {
     description: string;
     url: string;
 }
+
+export interface IBasicUserInfo {
+    userName: string;
+    name: string;
+    profilePicture: string;
+    completedDojos: number[];
+}
