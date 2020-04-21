@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import Navbar from "./components/navigation/Navbar";
 import DojoList from "./components/dojos/DojoList";
 
 function App() {
     return (
-        <Router>
+        <Router basename="/">
             <Navbar />
             <Switch>
                 <Route exact path="/" component={LandingPage} />
