@@ -1,21 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import { GoogleLogout } from "react-google-login";
-
-const StyledLogOutBtn = styled.button`
-    color: red;
-    background-color: inherit;
-    font-weight: bold;
-    border: solid;
-    border-width: 1px;
-    border-radius: 4px;
-    padding: 1vh 1vw;
-    cursor: pointer;
-
-    &:hover {
-        background-color: pink;
-    }
-`;
+import { EmptyButton } from "../styled-components/Reusables";
 
 interface Props {}
 
@@ -29,9 +14,9 @@ const LogOut = (props: Props) => {
             <GoogleLogout
                 clientId="314849626272-joeuug43b7lrbgvgqt71kqbarvn8nnes.apps.googleusercontent.com"
                 render={(renderProps) => (
-                    <StyledLogOutBtn onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                    <EmptyButton danger onClick={renderProps.onClick} disabled={renderProps.disabled}>
                         Log out
-                    </StyledLogOutBtn>
+                    </EmptyButton>
                 )}
                 onLogoutSuccess={logout}
             />
