@@ -13,6 +13,7 @@ const StyledNavBar = styled.nav`
     align-items: center;
     z-index: 1;
     color: black;
+    font-weight: bold;
 `;
 
 interface Props {}
