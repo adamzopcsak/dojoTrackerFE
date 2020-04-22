@@ -1,9 +1,10 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useContext } from "react";
 import styled from "styled-components";
 import HomeLink from "./HomeLink";
 import SignIn from "../user-management/SignIn";
 import LogOut from "../user-management/LogOut";
 import NavLinks from "./NavLinks";
+import { UserContext } from "../context/UserContextProvider";
 
 const StyledNavBar = styled.nav`
     width: 80%;
@@ -20,11 +21,13 @@ const StyledNavBar = styled.nav`
 interface Props {}
 
 const Navbar = (props: Props) => {
+    const [user, setUser] = useContext(UserContext);
+
     return (
         <StyledNavBar>
             <HomeLink />
 
-            {localStorage.getItem("userData") ? (
+            {user ? (
                 <Fragment>
                     {""}
                     <NavLinks />

@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GoogleLogout } from "react-google-login";
 import { EmptyButton } from "../styled-components/Reusables";
+import { UserContext } from "../context/UserContextProvider";
 
 interface Props {}
 
 const LogOut = (props: Props) => {
+    const [user, setUser] = useContext(UserContext);
+
     const logout = () => {
         localStorage.removeItem("userData");
+
+        setUser(null);
     };
 
     return (

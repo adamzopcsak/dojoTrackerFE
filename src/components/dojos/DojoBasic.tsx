@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { IBasicDojoInfo } from "../../static/util/interfaces";
 import { EmptyButton, CustomLink } from "../styled-components/Reusables";
+import StatusIndicator from "./StatusIndicator";
 
 const StyledTile = styled.div`
     display: flex;
@@ -36,13 +37,14 @@ const StyledTile = styled.div`
 
 interface Props {
     dojo: IBasicDojoInfo;
+    isComplete: boolean;
 }
 
 const DojoBasic = (props: Props) => {
     const history = useHistory();
 
     const redirectToDojoSpecific = () => {
-        history.push("#");
+        history.push(`/dojos/${props.dojo.id}`);
     };
 
     const goToDojoPage = () => {
@@ -52,6 +54,7 @@ const DojoBasic = (props: Props) => {
     return (
         <StyledTile onClick={redirectToDojoSpecific}>
             <p>{props.dojo.title}</p>
+            <StatusIndicator isComplete={props.isComplete} />
             <EmptyButton onClick={goToDojoPage}>Attempt</EmptyButton>
         </StyledTile>
     );
