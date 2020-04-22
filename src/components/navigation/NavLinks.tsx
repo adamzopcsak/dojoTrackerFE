@@ -5,6 +5,7 @@ import { CustomLink } from "../styled-components/Reusables";
 const StyledNavLinks = styled.ul`
     text-decoration: none;
     list-style: none;
+    text-align: center;
 
     & li {
         float: left;
@@ -33,6 +34,7 @@ const NavLinks = (props: Props) => {
                 <CustomLink to="/dojos">Dojos</CustomLink>
             </li>
             <li>Ranking</li>
+            <li>Profile</li>
         </StyledNavLinks>
     );
 };
