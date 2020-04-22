@@ -10,6 +10,11 @@ export const Container = styled.div`
     margin: 2rem;
 `;
 
+export const ContainerWithRows = styled(Container)`
+    flex-direction: row;
+    flex-wrap: wrap;
+`;
+
 export const CustomLink = styled(Link)`
     text-decoration: none;
     color: inherit;
