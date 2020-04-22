@@ -44,7 +44,7 @@ const DojoBasic = (props: Props) => {
     const history = useHistory();
 
     const redirectToDojoSpecific = () => {
-        history.push("#");
+        history.push(`/dojos/${props.dojo.id}`);
     };
 
     const goToDojoPage = () => {
