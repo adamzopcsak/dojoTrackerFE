@@ -8,8 +8,16 @@ export interface IBasicDojoInfo {
 }
 
 export interface IBasicUserInfo {
-    userName: string;
-    name: string;
-    profilePicture: string;
-    completedDojos: number[];
+    email: string;
+    firstName: string;
+    lastName: string;
+    id: number;
+    rank: number;
+}
+
+export interface IDojoSolution {
+    userId: number;
+    dojoId: number;
+    code: string;
+    language: string;
 }
