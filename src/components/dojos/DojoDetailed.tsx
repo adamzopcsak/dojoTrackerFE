@@ -31,7 +31,7 @@ const DojoDetailed = (props: Props) => {
                 <Fragment>
                     {""}
                     <DojoInfo title={dojo.title} link={dojo.url} />
-                    <SolutionEditor dojoId={dojo.id} />
+                    <SolutionEditor dojoId={dojo.id} isComplete={dojo.isDone} />
                 </Fragment>
             )}
         </ContainerWithRows>
