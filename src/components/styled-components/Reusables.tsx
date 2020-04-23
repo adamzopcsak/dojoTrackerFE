@@ -9,6 +9,10 @@ export const Container = styled.div`
     width: 80%;
     margin: 2rem;
     margin-top: 8%;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 15%;
+    }
 `;
 
 export const ContainerWithRows = styled(Container)`
