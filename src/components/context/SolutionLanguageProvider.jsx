@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 export const SolutionLanguageContext = createContext();
 
 const SolutionLanguageProvider = (props) => {
-    const [language, setLanguage] = useState("python");
+    const [language, setLanguage] = useState();
 
     return (
         <SolutionLanguageContext.Provider value={[language, setLanguage]}>
