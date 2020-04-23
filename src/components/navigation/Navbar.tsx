@@ -21,7 +21,7 @@ const StyledNavBar = styled.nav`
     top: 0;
 
     & * {
-        margin: 0 1rem;
+        margin: 0 0.5rem;
     }
 `;
 
