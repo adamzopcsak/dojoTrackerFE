@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import GoogleLogin from "react-google-login";
 import { EmptyButton } from "../styled-components/Reusables";
 import { UserContext } from "../context/UserContextProvider";
+import axios, { AxiosResponse } from "axios";
+import { IBasicUserInfo } from "../../static/util/interfaces";
 
 interface Props {}
 
@@ -11,11 +13,11 @@ const SignIn = (props: Props) => {
     const responseGoogle = (response: any) => {
         const res = response.profileObj;
 
-        localStorage.setItem("userData", JSON.stringify(res));
+        axios.get(`http://localhost:5000/user?email=${res.email}`).then((response: AxiosResponse<IBasicUserInfo>) => {
+            localStorage.setItem("dta-user-state", JSON.stringify(response.data));
 
-        const dummyUser = require("../../static/test data/users.json");
-
-        setUser(dummyUser);
+            setUser(response.data);
+        });
     };
 
     return (
@@ -30,7 +32,6 @@ const SignIn = (props: Props) => {
                 )}
                 onSuccess={responseGoogle}
                 onFailure={() => console.log("?????????????")}
-                isSignedIn={true}
             />
         </div>
     );
