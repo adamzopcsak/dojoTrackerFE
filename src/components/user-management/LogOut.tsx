@@ -2,14 +2,19 @@ import React, { useContext } from "react";
 import { GoogleLogout } from "react-google-login";
 import { EmptyButton } from "../styled-components/Reusables";
 import { UserContext } from "../context/UserContextProvider";
+import { useHistory } from "react-router-dom";
 
 interface Props {}
 
 const LogOut = (props: Props) => {
     const [user, setUser] = useContext(UserContext);
 
+    const history = useHistory();
+
     const logout = () => {
-        localStorage.removeItem("userData");
+        localStorage.removeItem("dta-user-state");
+
+        history.push("/");
 
         setUser(null);
     };
