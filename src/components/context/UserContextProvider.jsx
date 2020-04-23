@@ -1,11 +1,27 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import { loadState, saveState } from "../../static/util/persist";
 
 export const UserContext = createContext();
 
 const UserContextProvider = (props) => {
-    const [user, setUser] = useState();
+    const [state, setState] = useState("");
 
-    return <UserContext.Provider value={[user, setUser]}>{props.children}</UserContext.Provider>;
+    useEffect(() => {
+        const persistedState = loadState();
+        if (persistedState) {
+            setState(persistedState);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (state) {
+            saveState(state);
+        }
+    }, [state]);
+
+    console.log(state);
+
+    return <UserContext.Provider value={[state, setState]}>{props.children}</UserContext.Provider>;
 };
 
 export default UserContextProvider;
