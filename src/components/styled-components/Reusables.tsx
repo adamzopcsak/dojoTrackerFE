@@ -8,6 +8,7 @@ export const Container = styled.div`
     align-items: center;
     width: 80%;
     margin: 2rem;
+    margin-top: 8%;
 `;
 
 export const ContainerWithRows = styled(Container)`
