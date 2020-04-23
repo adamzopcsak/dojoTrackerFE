@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useContext } from "react";
+import React, { useState, Fragment, useContext, useRef } from "react";
 import styled from "styled-components";
 import HomeLink from "./HomeLink";
 import SignIn from "../user-management/SignIn";
@@ -7,7 +7,7 @@ import NavLinks from "./NavLinks";
 import { UserContext } from "../context/UserContextProvider";
 
 const StyledNavBar = styled.nav`
-    width: 80%;
+    width: 90%;
     max-width: 100%;
     height: 8vh;
     display: flex;
@@ -16,6 +16,13 @@ const StyledNavBar = styled.nav`
     z-index: 1;
     color: black;
     font-weight: bold;
+    position: fixed;
+    background-color: rgba(255, 255, 255, 1);
+    top: 0;
+
+    & * {
+        margin: 0 1rem;
+    }
 `;
 
 interface Props {}
