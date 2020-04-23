@@ -1,4 +1,4 @@
-import React, { RefObject, useContext } from "react";
+import React, { RefObject, useContext, Fragment } from "react";
 import ReactAce from "react-ace/lib/ace";
 import styled from "styled-components";
 import { SolutionLanguageContext } from "../context/SolutionLanguageProvider";
@@ -33,16 +33,20 @@ const EditorImputs = (props: Props) => {
 
     return (
         <StyledImputWrapper>
-            <select defaultValue="python" onChange={(event) => changeLanguage(event)}>
-                <option value="java">Java</option>
-                <option value="python">Python</option>
-                <option value="javascript">JavaScript</option>
-                <option value="csharp">C#</option>
-            </select>
-            <select defaultValue="monokai" onChange={(event) => changeEditorTheme(event)}>
-                <option value="github">Light</option>
-                <option value="monokai">Dark</option>
-            </select>
+            {language && editorTheme && (
+                <Fragment>
+                    <select defaultValue={language} onChange={(event) => changeLanguage(event)}>
+                        <option value="java">Java</option>
+                        <option value="python">Python</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="csharp">C#</option>
+                    </select>
+                    <select defaultValue={editorTheme} onChange={(event) => changeEditorTheme(event)}>
+                        <option value="github">Light</option>
+                        <option value="monokai">Dark</option>
+                    </select>
+                </Fragment>
+            )}
         </StyledImputWrapper>
     );
 };
