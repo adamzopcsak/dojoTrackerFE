@@ -37,7 +37,6 @@ const StyledTile = styled.div`
 
 interface Props {
     dojo: IBasicDojoInfo;
-    isComplete: boolean;
 }
 
 const DojoBasic = (props: Props) => {
@@ -54,7 +53,7 @@ const DojoBasic = (props: Props) => {
     return (
         <StyledTile onClick={redirectToDojoSpecific}>
             <p>{props.dojo.title}</p>
-            <StatusIndicator isComplete={props.isComplete} />
+            <StatusIndicator isComplete={props.dojo.isDone} />
             <EmptyButton onClick={goToDojoPage}>Attempt</EmptyButton>
         </StyledTile>
     );
