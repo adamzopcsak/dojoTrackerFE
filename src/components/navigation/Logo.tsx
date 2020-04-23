@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledLogo = styled.img`
     width: 3rem;
-    margin-right: 1rem;
+    margin: 0 1rem;
 `;
 
 interface Props {}
