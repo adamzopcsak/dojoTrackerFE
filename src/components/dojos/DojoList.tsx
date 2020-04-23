@@ -13,20 +13,19 @@ const DojoList = (props: Props) => {
     const [user, setUser] = useContext(UserContext);
 
     useEffect(() => {
-        axios.get("https://localhost:5001/api/dojo/list").then((response: AxiosResponse<IBasicDojoInfo>) => {
-            setDojos(response.data);
-        });
-    }, []);
-
-    const isDojoComplete = (id: number): boolean => {
-        return user.completedDojos.includes(id);
-    };
+        console.log("this is being called");
+        axios
+            .get(`http://localhost:5000/api/dojo/list?id=${user.id}`)
+            .then((response: AxiosResponse<IBasicDojoInfo>) => {
+                setDojos(response.data);
+            });
+    }, [user]);
 
     return (
         <ContainerWithRows>
             {dojos &&
                 dojos.map((dojo: IBasicDojoInfo) => {
-                    return <DojoBasic key={dojo.id} dojo={dojo} isComplete={isDojoComplete(dojo.id)} />;
+                    return <DojoBasic key={dojo.id} dojo={dojo} />;
                 })}
         </ContainerWithRows>
     );
