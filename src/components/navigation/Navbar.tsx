@@ -17,7 +17,7 @@ const StyledNavBar = styled.nav`
     color: black;
     font-weight: bold;
     position: fixed;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, 0.8);
     top: 0;
 
     & * {
