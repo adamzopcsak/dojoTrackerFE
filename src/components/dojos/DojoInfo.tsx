@@ -51,10 +51,8 @@ const DojoInfo = (props: Props) => {
     return (
         <StyledWrapper>
             <h1>{props.title}</h1>
-            <div>
-                <p>Mark as complete:</p>
-                <StatusIndicator isComplete={props.isComplete} onStatusChange={changeStatus} />
-            </div>
+
+            <StatusIndicator isComplete={props.isComplete} onStatusChange={changeStatus} />
 
             <EmptyButton onClick={goToDojoPage}>Attempt</EmptyButton>
         </StyledWrapper>
