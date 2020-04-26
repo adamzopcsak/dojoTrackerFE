@@ -15,6 +15,7 @@ import { EditorThemeContext } from "../context/EditorThemeProvider";
 import axios, { AxiosResponse } from "axios";
 import { UserContext } from "../context/UserContextProvider";
 import { IDojoSolution } from "../../static/util/interfaces";
+import { EmptyButton } from "../styled-components/Reusables";
 
 const StyledEditorWrapper = styled.div`
     display: flex;
@@ -24,6 +25,10 @@ const StyledEditorWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    & button {
+        margin-top: 1rem;
+    }
 
     @media screen and (max-width: 768px) {
         width: 100%;
@@ -53,7 +58,7 @@ const SolutionEditor = (props: Props) => {
 
     const getSolution = () => {
         axios
-            .get(`http://localhost:5000/solutions/${props.dojoId}?userId=${user.id}`)
+            .get(`http://localhost:5000/api/solutions/${props.dojoId}?userId=${user.id}`)
             .then((response: AxiosResponse<IDojoSolution>) => {
                 setLanguage(response.data.language);
                 setUserSolution(response.data.code);
@@ -65,23 +70,28 @@ const SolutionEditor = (props: Props) => {
         setUserSolution("");
     };
 
+    const isSolutionEmpty = (): boolean => {
+        return solution === "" || solution === null;
+    };
+
     const saveSolution = () => {
+        if (isSolutionEmpty()) {
+            return;
+        }
+
         axios
-            .post("http://localhost:5000/solutions", {
+            .post("http://localhost:5000/api/solutions", {
                 userId: user.id,
                 dojoId: props.dojoId,
                 code: solution,
                 language: language,
             })
-            .then((response) => {
-                console.log(response);
-            });
+            .then((response) => {});
     };
 
     return (
         <StyledEditorWrapper>
             <EditorImputs />
-
             <AceEditor
                 width="100%"
                 placeholder="Copy or type your solution here, then press save. DO NOT FORGET TO PRESS SAVE!!44!4"
@@ -103,8 +113,7 @@ const SolutionEditor = (props: Props) => {
                     tabSize: 2,
                 }}
             />
-
-            <button onClick={() => saveSolution()}>Save solution</button>
+            <EmptyButton onClick={() => saveSolution()}>Save solution</EmptyButton>
         </StyledEditorWrapper>
     );
 };
