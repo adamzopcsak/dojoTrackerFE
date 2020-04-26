@@ -13,6 +13,7 @@ const StatusIndicator = (props: Props) => {
                 type="checkbox"
                 defaultChecked={props.isComplete}
                 onChange={(event) => props.onStatusChange(event.target.checked)}
+                disabled
             />
             <span></span>
         </CustomCheckbox>
