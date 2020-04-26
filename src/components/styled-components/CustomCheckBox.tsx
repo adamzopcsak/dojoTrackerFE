@@ -4,7 +4,7 @@ export const CustomCheckbox = styled.label`
     display: block;
     position: relative;
     margin: auto;
-    cursor: pointer;
+    cursor: auto;
     font-size: 22px;
     line-height: 24px;
     height: 24px;
