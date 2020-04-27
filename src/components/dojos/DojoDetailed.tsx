@@ -16,12 +16,12 @@ const DojoDetailed = (props: Props) => {
     const [dojo, setDojo] = useState<null | IBasicDojoInfo>();
 
     useEffect(() => {
-        const dojo = getDojo();
+        const dojo = getDojoByParamId();
 
         setDojo(dojo);
     }, [id]);
 
-    const getDojo = (): IBasicDojoInfo => {
+    const getDojoByParamId = (): IBasicDojoInfo => {
         return dojos.find((dojo: IBasicDojoInfo) => dojo.id.toString() === id);
     };
 
