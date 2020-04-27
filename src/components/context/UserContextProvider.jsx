@@ -19,8 +19,6 @@ const UserContextProvider = (props) => {
         }
     }, [state]);
 
-    console.log(state);
-
     return <UserContext.Provider value={[state, setState]}>{props.children}</UserContext.Provider>;
 };
 
