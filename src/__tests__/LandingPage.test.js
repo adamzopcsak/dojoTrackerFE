@@ -1,11 +1,11 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
-import App from "../App";
+import LandingPage from "../components/LandingPage";
 
 afterEach(cleanup);
 
 test("Renders without crashing", () => {
-    const { getByText } = render(<App />);
+    const { getByText } = render(<LandingPage />);
     const landingPageTitle = getByText("ASD");
 
     expect(landingPageTitle).toBeInTheDocument();
