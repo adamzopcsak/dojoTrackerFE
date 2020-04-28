@@ -4,6 +4,7 @@ import { UserContext } from "../context/UserContextProvider";
 import { IBasicDojoInfo } from "../../static/util/interfaces";
 import axios, { AxiosResponse } from "axios";
 import DojoList from "./DojoList";
+import { ContainerWithRows } from "../styled-components/Reusables";
 
 interface Props {}
 
@@ -19,12 +20,7 @@ const DojoListContainer = (props: Props) => {
             });
     }, [user]);
 
-    return (
-        <Fragment>
-            {""}
-            {dojos && <DojoList dojos={dojos} />}
-        </Fragment>
-    );
+    return <DojoList dojos={dojos} />;
 };
 
 export default DojoListContainer;
