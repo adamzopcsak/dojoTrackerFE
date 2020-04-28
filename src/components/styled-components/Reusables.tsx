@@ -40,17 +40,19 @@ interface ButtonProps {
 }
 
 export const EmptyButton = styled.button`
-    color: ${(props: ButtonProps) => (props.danger ? "red" : "black")};
+    color: ${(props: ButtonProps) => (props.danger ? "#dc3545" : "#4d4d4d")};
     background-color: inherit;
     font-weight: bold;
     border: solid;
     border-width: 1px;
-    border-radius: 4px;
+    border-radius: 7px;
     padding: 1vh 1vw;
     cursor: pointer;
     letter-spacing: 0.1rem;
+    transition: background-color 0.5s;
 
     &:hover {
-        background-color: ${(props) => (props.danger ? "pink" : "gray")};
+        background-color: ${(props) => (props.danger ? "#dc3545" : "#4d4d4d")};
+        color: white;
     }
 `;
