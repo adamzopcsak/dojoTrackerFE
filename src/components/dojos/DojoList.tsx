@@ -10,9 +10,10 @@ interface Props {
 const DojoList = (props: Props) => {
     return (
         <ContainerWithRows>
-            {props.dojos.map((dojo: IBasicDojoInfo) => {
-                return <DojoBasic key={dojo.id} dojo={dojo} />;
-            })}
+            {props.dojos &&
+                props.dojos.map((dojo: IBasicDojoInfo) => {
+                    return <DojoBasic key={dojo.id} dojo={dojo} />;
+                })}
         </ContainerWithRows>
     );
 };
