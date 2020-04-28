@@ -55,7 +55,7 @@ const DojoBasic = (props: Props) => {
     };
 
     return (
-        <StyledTile onClick={redirectToDojoSpecific}>
+        <StyledTile onClick={redirectToDojoSpecific} data-testid="dojocard-container">
             <p>{props.dojo.title}</p>
             <StatusIndicator isComplete={props.dojo.isDone} onStatusChange={changeStatus} />
             <EmptyButton onClick={goToDojoPage}>Attempt</EmptyButton>
