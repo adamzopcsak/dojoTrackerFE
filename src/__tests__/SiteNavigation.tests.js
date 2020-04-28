@@ -2,8 +2,7 @@ import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import Navbar from "../components/navigation/Navbar";
 import { UserContext } from "../components/context/UserContextProvider";
-import { MemoryRouter, useMemoryHistory, Route } from "react-router-dom";
-import { DojoContext } from "../components/context/DojoContextProvider";
+import { MemoryRouter, Route } from "react-router-dom";
 import DojoList from "../components/dojos/DojoList";
 import LandingPage from "../components/LandingPage";
 
