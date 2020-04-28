@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { ContainerWithRows } from "../styled-components/Reusables";
 import DojoBasic from "./DojoBasic";
 import { IBasicDojoInfo } from "../../static/util/interfaces";
@@ -9,7 +9,7 @@ interface Props {
 
 const DojoList = (props: Props) => {
     return (
-        <ContainerWithRows>
+        <ContainerWithRows data-testid="dojolist-container">
             {props.dojos &&
                 props.dojos.map((dojo: IBasicDojoInfo) => {
                     return <DojoBasic key={dojo.id} dojo={dojo} />;
