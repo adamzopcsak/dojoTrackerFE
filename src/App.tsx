@@ -2,12 +2,12 @@ import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import Navbar from "./components/navigation/Navbar";
-import DojoList from "./components/dojos/DojoList";
 import UserContextProvider from "./components/context/UserContextProvider";
 import DojoContextProvider from "./components/context/DojoContextProvider";
 import DojoDetailed from "./components/dojos/DojoDetailed";
 import SolutionLanguageProvider from "./components/context/SolutionLanguageProvider";
 import EditorThemeProvider from "./components/context/EditorThemeProvider";
+import DojoListContainer from "./components/dojos/DojoListContainer";
 
 function App() {
     return (
@@ -17,7 +17,7 @@ function App() {
                     <Navbar />
                     <Switch>
                         <Route exact path="/" component={LandingPage} />
-                        <Route exact path="/dojos" component={DojoList} />
+                        <Route exact path="/dojos" component={DojoListContainer} />
                         <SolutionLanguageProvider>
                             <EditorThemeProvider>
                                 <Route path="/dojos/:id" component={DojoDetailed} />
