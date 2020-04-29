@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { EmptyButton } from "../styled-components/Reusables";
-import StatusIndicator from "./StatusIndicator";
+import StatusIndicator from "../dojos/StatusIndicator";
 import axios from "axios";
 
 const StyledWrapper = styled.div`
