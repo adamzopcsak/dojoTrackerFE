@@ -2,6 +2,8 @@
 
 ![site](https://i.imgur.com/aEwFBGO.png)
 
+Disclaimer: this is a work currently in early progress.
+
 ### Goals of the site:
 
 Provide CodeCoolers with an App where they can:
