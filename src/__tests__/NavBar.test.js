@@ -4,9 +4,13 @@ import Navbar from "../components/navigation/Navbar";
 import { UserContext } from "../components/context/UserContextProvider";
 import { MemoryRouter } from "react-router-dom";
 
-const LoggedInStateMockComponent = (props) => {
+const LoggedInStateMockComponent = ({ mockUser }) => {
+    const setter = (s) => {
+        return;
+    };
+
     return (
-        <UserContext.Provider value={[props.mockUser]}>
+        <UserContext.Provider value={{ user: mockUser, setUser: setter }}>
             <MemoryRouter initialEntries={["/"]}>
                 <Navbar />
             </MemoryRouter>
