@@ -3,18 +3,12 @@ import styled from "styled-components";
 import { CustomCheckbox } from "../styled-components/CustomCheckBox";
 interface Props {
     isComplete: boolean;
-    onStatusChange: (status: any) => void;
 }
 
 const StatusIndicator = (props: Props) => {
     return (
         <CustomCheckbox>
-            <input
-                type="checkbox"
-                defaultChecked={props.isComplete}
-                onChange={(event) => props.onStatusChange(event.target.checked)}
-                disabled
-            />
+            <input type="checkbox" defaultChecked={props.isComplete} disabled data-testid="dojo-checkbox" />
             <span></span>
         </CustomCheckbox>
     );
