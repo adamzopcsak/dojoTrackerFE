@@ -28,7 +28,7 @@ Practice working in a team imitating a real work project, where we have:
 
 - Front end dev(s).
 - Back end dev(s).
-- A test automation engineer who builds a CI/CD pipeline.
+- A test automation engineer.
 - A product owner with their own needs.
 
 
