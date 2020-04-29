@@ -1,8 +1,9 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { loadState, saveState } from "../../static/util/persist";
+import { IBasicUserInfo } from "../../static/util/interfaces";
 
 interface ContextStateProp {
-    user: any;
+    user: any | IBasicUserInfo;
     setUser: Function;
 }
 
