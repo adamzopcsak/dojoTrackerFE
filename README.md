@@ -1,4 +1,51 @@
-#CC DOJO TRACKER
+## Summoner Searcher
+
+![site](https://i.imgur.com/xgFTxSI.png)
+
+### Goals of the site:
+
+Provide CodeCoolers with an App where they can:
+
+- track their completed "Dojos" (Algorythmic exercizes).
+- save solutions for completed dojos.
+- see how they rank compared to other codecoolers.
+- see variuous statistics about their progress.
+- ask mentors & peers for their feedback on solutions.
+
+
+### Motivations for building this project:
+
+Further my knowledge in:
+
+- front-end design patterns.
+- testing front-end applications.
+- designing user friendly & clear UI without using frameworks (eg. bootstrap/materialUI/antDesign).
+- deepen knowladge building React apps.
+
+Practice working in a team imitating a real work project, where we have:
+
+- Front end dev(s).
+- Back end dev(s).
+- A test automation engineer who builds a CI/CD pipeline.
+- A product owner with their own needs.
+
+
+### In order to run the website:
+
+-  Please download the backend API from (and follow readme.md): https://github.com/GyulaHodosi/dojoTrackerBE
+- Install dependencies :  `npm install` from project root.
+- Run the development server with: `npm start`
+- To run unit tests use command: `npm test.
+
+
+### Technologies used:
+
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Styled components](https://styled-components.com/)
+- [Jest](https://jestjs.io/)
+- [React testing library](https://testing-library.com/)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
