@@ -4,10 +4,10 @@ import LandingPage from "./components/LandingPage";
 import Navbar from "./components/navigation/Navbar";
 import UserContextProvider from "./components/context/UserContextProvider";
 import DojoContextProvider from "./components/context/DojoContextProvider";
-import DojoDetailed from "./components/dojos/DojoDetailed";
-import SolutionLanguageProvider from "./components/context/SolutionLanguageProvider";
 import EditorThemeProvider from "./components/context/EditorThemeProvider";
 import DojoListContainer from "./components/dojos/DojoListContainer";
+import SolutionLanguageProvider from "./components/context/SolutionLanguageProvider";
+import DojoDetailed from "./components/solution/DojoDetailed";
 
 function App() {
     return (
