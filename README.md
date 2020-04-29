@@ -1,4 +1,4 @@
-## Summoner Searcher
+## Dojo Tracker
 
 ![site](https://i.imgur.com/aEwFBGO.png)
 
