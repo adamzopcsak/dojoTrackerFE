@@ -50,14 +50,10 @@ const DojoBasic = (props: Props) => {
         window.open(props.dojo.url, "_blank");
     };
 
-    const changeStatus = (status: any) => {
-        console.log(status);
-    };
-
     return (
         <StyledTile onClick={redirectToDojoSpecific} data-testid="dojocard-container">
             <p>{props.dojo.title}</p>
-            <StatusIndicator isComplete={props.dojo.isDone} onStatusChange={changeStatus} />
+            <StatusIndicator isComplete={props.dojo.isDone} />
             <EmptyButton onClick={goToDojoPage}>Attempt</EmptyButton>
         </StyledTile>
     );
