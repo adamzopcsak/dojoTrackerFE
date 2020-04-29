@@ -12,7 +12,6 @@ const SignIn = (props: Props) => {
 
     const responseGoogle = (response: any) => {
         const res = response.profileObj;
-        console.log(res);
 
         axios.get(`http://localhost:5000/user?email=${res.email}`).then((response: AxiosResponse<IBasicUserInfo>) => {
             localStorage.setItem("dta-user-state", JSON.stringify(response.data));
