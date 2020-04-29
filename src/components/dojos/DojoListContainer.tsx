@@ -10,7 +10,7 @@ interface Props {}
 
 const DojoListContainer = (props: Props) => {
     const [dojos, setDojos] = useContext(DojoContext);
-    const [user, setUser] = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     useEffect(() => {
         axios

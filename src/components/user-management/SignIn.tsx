@@ -8,10 +8,11 @@ import { IBasicUserInfo } from "../../static/util/interfaces";
 interface Props {}
 
 const SignIn = (props: Props) => {
-    const [user, setUser] = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
 
     const responseGoogle = (response: any) => {
         const res = response.profileObj;
+        console.log(res);
 
         axios.get(`http://localhost:5000/user?email=${res.email}`).then((response: AxiosResponse<IBasicUserInfo>) => {
             localStorage.setItem("dta-user-state", JSON.stringify(response.data));

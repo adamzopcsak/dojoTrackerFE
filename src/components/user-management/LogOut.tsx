@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 interface Props {}
 
 const LogOut = (props: Props) => {
-    const [user, setUser] = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
 
     const history = useHistory();
 

@@ -28,7 +28,7 @@ const StyledNavBar = styled.nav`
 interface Props {}
 
 const Navbar = (props: Props) => {
-    const [user, setUser] = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     return (
         <StyledNavBar>

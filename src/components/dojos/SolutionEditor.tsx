@@ -43,7 +43,7 @@ interface Props {
 const SolutionEditor = (props: Props) => {
     const [language, setLanguage] = useContext(SolutionLanguageContext);
     const [editorTheme, setEditorTheme] = useContext(EditorThemeContext);
-    const [user, setUser] = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const [userSolution, setUserSolution] = useState<null | string>();
 
