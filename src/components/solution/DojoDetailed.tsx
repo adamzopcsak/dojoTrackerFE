@@ -11,19 +11,16 @@ interface Props {}
 const DojoDetailed = (props: Props) => {
     const { id } = useParams();
 
-    const { dojos } = useContext(DojoContext);
+    const { getById } = useContext(DojoContext);
 
     const [dojo, setDojo] = useState<null | IBasicDojoInfo>();
 
     useEffect(() => {
-        const dojo = getDojoByParamId();
-
-        setDojo(dojo);
+        (async function getDojo() {
+            const dojoById = await getById(id);
+            setDojo(dojoById);
+        })();
     }, [id]);
-
-    const getDojoByParamId = (): IBasicDojoInfo => {
-        return dojos.find((dojo: IBasicDojoInfo) => dojo.id.toString() === id);
-    };
 
     return (
         <ContainerWithRows>
