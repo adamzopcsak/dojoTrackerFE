@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { EmptyButton } from "../styled-components/Reusables";
 import StatusIndicator from "../dojos/StatusIndicator";
-import axios from "axios";
 
 const StyledWrapper = styled.div`
     display: flex;
@@ -45,8 +44,6 @@ const DojoInfo = (props: Props) => {
     const goToDojoPage = () => {
         window.open(props.link, "_blank");
     };
-
-    const changeStatus = (status: any) => {};
 
     return (
         <StyledWrapper>

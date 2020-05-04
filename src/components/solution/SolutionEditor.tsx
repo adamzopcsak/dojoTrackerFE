@@ -1,4 +1,4 @@
-import React, { useState, useRef, RefObject, MutableRefObject, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import AceEditor from "react-ace";
 import styled from "styled-components";
 
@@ -41,8 +41,8 @@ interface Props {
 }
 
 const SolutionEditor = (props: Props) => {
-    const [language, setLanguage] = useContext(SolutionLanguageContext);
-    const [editorTheme, setEditorTheme] = useContext(EditorThemeContext);
+    const { language, setLanguage } = useContext(SolutionLanguageContext);
+    const { editorTheme } = useContext(EditorThemeContext);
     const { user } = useContext(UserContext);
 
     const [userSolution, setUserSolution] = useState<null | string>();

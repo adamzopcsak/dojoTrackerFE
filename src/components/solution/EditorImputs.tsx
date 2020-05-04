@@ -1,5 +1,4 @@
-import React, { RefObject, useContext, Fragment } from "react";
-import ReactAce from "react-ace/lib/ace";
+import React, { useContext, Fragment } from "react";
 import styled from "styled-components";
 import { SolutionLanguageContext } from "../context/SolutionLanguageProvider";
 import { EditorThemeContext } from "../context/EditorThemeProvider";
@@ -20,8 +19,8 @@ const StyledImputWrapper = styled.div`
 interface Props {}
 
 const EditorImputs = (props: Props) => {
-    const [language, setLanguage] = useContext(SolutionLanguageContext);
-    const [editorTheme, setEditorTheme] = useContext(EditorThemeContext);
+    const { language, setLanguage } = useContext(SolutionLanguageContext);
+    const { editorTheme, setEditorTheme } = useContext(EditorThemeContext);
 
     const changeLanguage = (event: any) => {
         setLanguage(event.target.value);

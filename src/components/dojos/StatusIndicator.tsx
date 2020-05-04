@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import { CustomCheckbox } from "../styled-components/CustomCheckBox";
 interface Props {
     isComplete: boolean;
