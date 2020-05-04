@@ -45,7 +45,7 @@ const SolutionEditor = (props: Props) => {
     const { editorTheme } = useContext(EditorThemeContext);
     const { user } = useContext(UserContext);
 
-    const [userSolution, setUserSolution] = useState<null | string>();
+    const [userSolution, setUserSolution] = useState<null | IDojoSolution[]>();
 
     let solution = "";
 
@@ -59,15 +59,19 @@ const SolutionEditor = (props: Props) => {
     const getSolution = () => {
         axios
             .get(`http://localhost:5000/api/solutions/${props.dojoId}?userId=${user.id}`)
-            .then((response: AxiosResponse<IDojoSolution>) => {
-                setLanguage(response.data.language);
-                setUserSolution(response.data.code);
+            .then((response: AxiosResponse<IDojoSolution[]>) => {
+                setLanguage(response.data[0].language);
+                setUserSolution(response.data);
+                console.log(solution);
             });
     };
 
     const setDefaultValues = () => {
         setLanguage("python");
-        setUserSolution("");
+    };
+
+    const getSolutionByLanguage = () => {
+        return userSolution?.find((solution) => solution.language === language)?.language;
     };
 
     const isSolutionEmpty = (): boolean => {
@@ -86,7 +90,9 @@ const SolutionEditor = (props: Props) => {
                 code: solution,
                 language: language,
             })
-            .then((response) => {});
+            .then(() => {
+                console.log("we might have postedsomething");
+            });
     };
 
     return (
@@ -104,7 +110,7 @@ const SolutionEditor = (props: Props) => {
                 showPrintMargin={true}
                 showGutter={true}
                 highlightActiveLine={true}
-                value={userSolution ? userSolution : ""}
+                value={userSolution ? getSolutionByLanguage() : ""}
                 setOptions={{
                     enableBasicAutocompletion: false,
                     enableLiveAutocompletion: false,
