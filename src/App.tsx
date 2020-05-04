@@ -5,9 +5,9 @@ import Navbar from "./components/navigation/Navbar";
 import UserContextProvider from "./components/context/UserContextProvider";
 import DojoContextProvider from "./components/context/DojoContextProvider";
 import EditorThemeProvider from "./components/context/EditorThemeProvider";
-import DojoListContainer from "./components/dojos/DojoListContainer";
 import SolutionLanguageProvider from "./components/context/SolutionLanguageProvider";
 import DojoDetailed from "./components/solution/DojoDetailed";
+import DojoList from "./components/dojos/DojoList";
 
 function App() {
     return (
@@ -17,7 +17,7 @@ function App() {
                     <Navbar />
                     <Switch>
                         <Route exact path="/" component={LandingPage} />
-                        <Route exact path="/dojos" component={DojoListContainer} />
+                        <Route exact path="/dojos" component={DojoList} />
                         <SolutionLanguageProvider>
                             <EditorThemeProvider>
                                 <Route path="/dojos/:id" component={DojoDetailed} />
