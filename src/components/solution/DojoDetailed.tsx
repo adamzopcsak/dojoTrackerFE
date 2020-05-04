@@ -11,7 +11,7 @@ interface Props {}
 const DojoDetailed = (props: Props) => {
     const { id } = useParams();
 
-    const [dojos, setDojos] = useContext(DojoContext);
+    const { dojos } = useContext(DojoContext);
 
     const [dojo, setDojo] = useState<null | IBasicDojoInfo>();
 
