@@ -19,7 +19,7 @@ describe("All dojo cards", () => {
     test("should render without crashing ", () => {
         const { queryByTestId } = render(<MockDojoCard dojo={mockDojo} />);
 
-        expect(queryByTestId("dojocard-container")).toBeInTheDocument;
+        expect(queryByTestId("dojocard-container")).toBeInTheDocument();
     });
 
     test("should have a title", () => {
