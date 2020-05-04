@@ -5,6 +5,7 @@ import { DojoContext } from "../context/DojoContextProvider";
 import { IBasicDojoInfo } from "../../static/util/interfaces";
 import SolutionEditor from "./SolutionEditor";
 import DojoInfo from "./DojoInfo";
+import { SolutionContext } from "../context/SolutionContextProvider";
 
 interface Props {}
 
@@ -12,6 +13,7 @@ const DojoDetailed = (props: Props) => {
     const { id } = useParams();
 
     const { getById } = useContext(DojoContext);
+    const { setDojoId } = useContext(SolutionContext);
 
     const [dojo, setDojo] = useState<null | IBasicDojoInfo>();
 
@@ -19,6 +21,7 @@ const DojoDetailed = (props: Props) => {
         (async function getDojo() {
             const dojoById = await getById(id);
             setDojo(dojoById);
+            setDojoId(id);
         })();
     }, [id]);
 
@@ -26,9 +29,8 @@ const DojoDetailed = (props: Props) => {
         <ContainerWithRows>
             {dojo && (
                 <Fragment>
-                    {""}
                     <DojoInfo title={dojo.title} link={dojo.url} isComplete={dojo.isDone} />
-                    <SolutionEditor dojoId={dojo.id} isComplete={dojo.isDone} />
+                    <SolutionEditor isComplete={dojo.isDone} />
                 </Fragment>
             )}
         </ContainerWithRows>
