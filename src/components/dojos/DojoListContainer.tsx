@@ -1,15 +1,14 @@
-import React, { useContext, useEffect, Fragment } from "react";
+import React, { useContext, useEffect } from "react";
 import { DojoContext } from "../context/DojoContextProvider";
 import { UserContext } from "../context/UserContextProvider";
 import { IBasicDojoInfo } from "../../static/util/interfaces";
 import axios, { AxiosResponse } from "axios";
 import DojoList from "./DojoList";
-import { ContainerWithRows } from "../styled-components/Reusables";
 
 interface Props {}
 
 const DojoListContainer = (props: Props) => {
-    const [dojos, setDojos] = useContext(DojoContext);
+    const { dojos, setDojos } = useContext(DojoContext);
     const { user } = useContext(UserContext);
 
     useEffect(() => {
