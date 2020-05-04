@@ -42,19 +42,17 @@ interface Props {
 const DojoBasic = (props: Props) => {
     const history = useHistory();
 
-    const redirectToDojoSpecific = () => {
-        history.push(`/dojos/${props.dojo.id}`);
-    };
-
-    const goToDojoPage = () => {
-        window.open(props.dojo.url, "_blank");
+    const redirect = (event: any): void => {
+        event.target.classList.contains("dojo-card")
+            ? history.push(`/dojos/${props.dojo.id}`)
+            : window.open(props.dojo.url, "_blank");
     };
 
     return (
-        <StyledTile onClick={redirectToDojoSpecific} data-testid="dojocard-container">
+        <StyledTile onClick={(event) => redirect(event)} data-testid="dojocard-container" className="dojo-card">
             <p>{props.dojo.title}</p>
             <StatusIndicator isComplete={props.dojo.isDone} />
-            <EmptyButton onClick={goToDojoPage}>Attempt</EmptyButton>
+            <EmptyButton>Attempt</EmptyButton>
         </StyledTile>
     );
 };
