@@ -8,6 +8,7 @@ import EditorThemeProvider from "./components/context/EditorThemeProvider";
 import SolutionLanguageProvider from "./components/context/SolutionLanguageProvider";
 import DojoDetailed from "./components/solution/DojoDetailed";
 import DojoList from "./components/dojos/DojoList";
+import SolutionContextProvider from "./components/context/SolutionContextProvider";
 
 function App() {
     return (
@@ -17,10 +18,12 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
                     <DojoContextProvider>
-                        <Route exact path="/dojos" component={DojoList} />
                         <SolutionLanguageProvider>
                             <EditorThemeProvider>
-                                <Route path="/dojos/:id" component={DojoDetailed} />
+                                <SolutionContextProvider>
+                                    <Route exact path="/dojos" component={DojoList} />
+                                    <Route path="/dojos/:id" component={DojoDetailed} />
+                                </SolutionContextProvider>
                             </EditorThemeProvider>
                         </SolutionLanguageProvider>
                     </DojoContextProvider>
