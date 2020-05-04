@@ -7,6 +7,7 @@ import axios from "axios";
 interface ContextStateProp {
     dojos: any | IBasicDojoInfo;
     setDojos: Function;
+    getById: Function;
 }
 
 export const DojoContext = createContext<ContextStateProp>({} as ContextStateProp);
@@ -24,7 +25,13 @@ const DojoContextProvider = ({ children }: { children: ReactNode }) => {
             });
     }, [user]);
 
-    return <DojoContext.Provider value={{ dojos, setDojos }}>{children}</DojoContext.Provider>;
+    const getById = async (id: string) => {
+        return dojos === undefined
+            ? (await axios.get(`http://localhost:5000/api/dojo/${id}`)).data
+            : dojos.find((dojo: IBasicDojoInfo) => dojo.id.toString() === id);
+    };
+
+    return <DojoContext.Provider value={{ dojos, setDojos, getById }}>{children}</DojoContext.Provider>;
 };
 
 export default DojoContextProvider;
