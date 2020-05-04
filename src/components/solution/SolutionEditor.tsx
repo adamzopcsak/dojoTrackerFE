@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import AceEditor from "react-ace";
 import styled from "styled-components";
 
@@ -12,16 +12,14 @@ import "ace-builds/src-noconflict/theme-github";
 import EditorImputs from "./EditorImputs";
 import { SolutionLanguageContext } from "../context/SolutionLanguageProvider";
 import { EditorThemeContext } from "../context/EditorThemeProvider";
-import axios, { AxiosResponse } from "axios";
-import { UserContext } from "../context/UserContextProvider";
-import { IDojoSolution } from "../../static/util/interfaces";
 import { EmptyButton } from "../styled-components/Reusables";
+import { SolutionContext } from "../context/SolutionContextProvider";
 
 const StyledEditorWrapper = styled.div`
     display: flex;
     width: 40%;
     height: auto;
-    padding: 3rem;
+    margin: 0 3rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -36,63 +34,17 @@ const StyledEditorWrapper = styled.div`
 `;
 
 interface Props {
-    dojoId: number;
     isComplete: boolean;
 }
 
 const SolutionEditor = (props: Props) => {
-    const { language, setLanguage } = useContext(SolutionLanguageContext);
+    const { language } = useContext(SolutionLanguageContext);
     const { editorTheme } = useContext(EditorThemeContext);
-    const { user } = useContext(UserContext);
 
-    const [userSolution, setUserSolution] = useState<null | IDojoSolution[]>();
-
-    let solution = "";
+    const { solution, setSolution, postSolution } = useContext(SolutionContext);
 
     const changeTextInEditor = (newValue: string) => {
-        solution = newValue;
-    };
-    useEffect(() => {
-        props.isComplete ? getSolution() : setDefaultValues();
-    }, []);
-
-    const getSolution = () => {
-        axios
-            .get(`http://localhost:5000/api/solutions/${props.dojoId}?userId=${user.id}`)
-            .then((response: AxiosResponse<IDojoSolution[]>) => {
-                setLanguage(response.data[0].language);
-                setUserSolution(response.data);
-                console.log(solution);
-            });
-    };
-
-    const setDefaultValues = () => {
-        setLanguage("python");
-    };
-
-    const getSolutionByLanguage = () => {
-        return userSolution?.find((solution) => solution.language === language)?.language;
-    };
-
-    const isSolutionEmpty = (): boolean => {
-        return solution === "" || solution === null;
-    };
-
-    const saveSolution = () => {
-        if (isSolutionEmpty()) {
-            return;
-        }
-
-        axios
-            .post("http://localhost:5000/api/solutions", {
-                userId: user.id,
-                dojoId: props.dojoId,
-                code: solution,
-                language: language,
-            })
-            .then(() => {
-                console.log("we might have postedsomething");
-            });
+        setSolution(newValue);
     };
 
     return (
@@ -104,13 +56,13 @@ const SolutionEditor = (props: Props) => {
                 defaultValue={""}
                 mode={language}
                 theme={editorTheme}
-                name={`${props.dojoId}`}
+                name={`solutin`}
                 onChange={(value: string) => changeTextInEditor(value)}
                 fontSize={14}
                 showPrintMargin={true}
                 showGutter={true}
                 highlightActiveLine={true}
-                value={userSolution ? getSolutionByLanguage() : ""}
+                value={solution}
                 setOptions={{
                     enableBasicAutocompletion: false,
                     enableLiveAutocompletion: false,
@@ -119,7 +71,7 @@ const SolutionEditor = (props: Props) => {
                     tabSize: 2,
                 }}
             />
-            <EmptyButton onClick={() => saveSolution()}>Save solution</EmptyButton>
+            <EmptyButton onClick={() => postSolution()}>Save solution</EmptyButton>
         </StyledEditorWrapper>
     );
 };
