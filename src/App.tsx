@@ -13,18 +13,18 @@ function App() {
     return (
         <Router basename="/">
             <UserContextProvider>
-                <DojoContextProvider>
-                    <Navbar />
-                    <Switch>
-                        <Route exact path="/" component={LandingPage} />
+                <Navbar />
+                <Switch>
+                    <Route exact path="/" component={LandingPage} />
+                    <DojoContextProvider>
                         <Route exact path="/dojos" component={DojoList} />
                         <SolutionLanguageProvider>
                             <EditorThemeProvider>
                                 <Route path="/dojos/:id" component={DojoDetailed} />
                             </EditorThemeProvider>
                         </SolutionLanguageProvider>
-                    </Switch>
-                </DojoContextProvider>
+                    </DojoContextProvider>
+                </Switch>
             </UserContextProvider>
         </Router>
     );
