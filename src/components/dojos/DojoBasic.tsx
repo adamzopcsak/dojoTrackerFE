@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { IBasicDojoInfo } from "../../static/util/interfaces";
-import { EmptyButton, CustomLink } from "../styled-components/Reusables";
+import { EmptyButton } from "../styled-components/Reusables";
 import StatusIndicator from "./StatusIndicator";
 
 const StyledTile = styled.div`

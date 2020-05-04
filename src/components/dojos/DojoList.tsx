@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { ContainerWithRows } from "../styled-components/Reusables";
 import DojoBasic from "./DojoBasic";
 import { IBasicDojoInfo } from "../../static/util/interfaces";
