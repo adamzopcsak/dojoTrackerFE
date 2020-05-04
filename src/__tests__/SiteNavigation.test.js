@@ -5,6 +5,7 @@ import { UserContext } from "../components/context/UserContextProvider";
 import { MemoryRouter, Route } from "react-router-dom";
 import DojoList from "../components/dojos/DojoList";
 import LandingPage from "../components/LandingPage";
+import { DojoContext } from "../components/context/DojoContextProvider";
 
 const NavigationMockComponent = ({ mockUser, mockDojo, entries }) => {
     const setter = (s) => {
@@ -13,11 +14,13 @@ const NavigationMockComponent = ({ mockUser, mockDojo, entries }) => {
 
     return (
         <UserContext.Provider value={{ user: mockUser, setUser: setter }}>
-            <MemoryRouter initialEntries={[entries]}>
-                <Navbar />
-                <Route exact path="/dojos" render={(renderProps) => <DojoList {...renderProps} dojos={mockDojo} />} />
-                <Route exact path="/" component={LandingPage} />
-            </MemoryRouter>
+            <DojoContext.Provider value={{ dojos: mockDojo, setDojos: setter }}>
+                <MemoryRouter initialEntries={[entries]}>
+                    <Navbar />
+                    <Route exact path="/dojos" render={(renderProps) => <DojoList {...renderProps} />} />
+                    <Route exact path="/" component={LandingPage} />
+                </MemoryRouter>
+            </DojoContext.Provider>
         </UserContext.Provider>
     );
 };

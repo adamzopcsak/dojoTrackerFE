@@ -2,12 +2,19 @@ import React from "react";
 import { render, cleanup } from "@testing-library/react";
 import DojoList from "../components/dojos/DojoList";
 import { MemoryRouter } from "react-router-dom";
+import { DojoContext } from "../components/context/DojoContextProvider";
 
-const MockDojoList = (props) => {
+const MockDojoList = ({ dojos }) => {
+    const setter = (s) => {
+        return;
+    };
+
     return (
-        <MemoryRouter initialEntries={["/dojos"]}>
-            <DojoList dojos={props.dojos} />
-        </MemoryRouter>
+        <DojoContext.Provider value={{ dojos: dojos, setDojos: setter }}>
+            <MemoryRouter initialEntries={["/dojos"]}>
+                <DojoList />
+            </MemoryRouter>
+        </DojoContext.Provider>
     );
 };
 
