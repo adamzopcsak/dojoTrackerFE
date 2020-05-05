@@ -40,7 +40,3 @@ describe("All dojo cards", () => {
         expect(queryByText("Attempt")).toBeInTheDocument();
     });
 });
-
-describe("When I click on", () => {
-    const mockDojo = { id: 1, title: "Testdojo 1", description: "", difficulty: 1, url: "google.com", isDone: true };
-});
