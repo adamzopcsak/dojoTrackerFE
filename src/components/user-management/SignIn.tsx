@@ -13,10 +13,8 @@ const SignIn = (props: Props) => {
     const responseGoogle = (response: any) => {
         const res = response.profileObj;
 
-        axios.get(`http://localhost:5000/user?email=${res.email}`).then((response: AxiosResponse<IBasicUserInfo>) => {
-            localStorage.setItem("dta-user-state", JSON.stringify(response.data));
-
-            setUser(response.data);
+        axios.post(`http://localhost:5000/api/user/login`, res).then((response: AxiosResponse<IBasicUserInfo>) => {
+            console.log("THIS ISNT IMPLEMENTED YET YO");
         });
     };
 
