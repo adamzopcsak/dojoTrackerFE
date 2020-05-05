@@ -6,7 +6,7 @@ import UserContextProvider from "./components/context/UserContextProvider";
 import DojoContextProvider from "./components/context/DojoContextProvider";
 import EditorThemeProvider from "./components/context/EditorThemeProvider";
 import SolutionLanguageProvider from "./components/context/SolutionLanguageProvider";
-import DojoDetailed from "./components/solution/DojoDetailed";
+import SolutionContainer from "./components/solution/SolutionContainer";
 import DojoList from "./components/dojos/DojoList";
 import SolutionContextProvider from "./components/context/SolutionContextProvider";
 
@@ -22,7 +22,7 @@ function App() {
                             <EditorThemeProvider>
                                 <SolutionContextProvider>
                                     <Route exact path="/dojos" component={DojoList} />
-                                    <Route path="/dojos/:id" component={DojoDetailed} />
+                                    <Route path="/dojos/:id" component={SolutionContainer} />
                                 </SolutionContextProvider>
                             </EditorThemeProvider>
                         </SolutionLanguageProvider>
