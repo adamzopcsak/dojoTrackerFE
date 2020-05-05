@@ -1,11 +1,9 @@
 import React, { useContext, useState, useEffect, Fragment } from "react";
-import { ContainerWithRows } from "../styled-components/Reusables";
 import { useParams } from "react-router-dom";
 import { DojoContext } from "../context/DojoContextProvider";
 import { IBasicDojoInfo } from "../../static/util/interfaces";
-import SolutionEditor from "./SolutionEditor";
-import DojoInfo from "./DojoInfo";
 import { SolutionContext } from "../context/SolutionContextProvider";
+import Solution from "./Solution";
 
 interface Props {}
 
@@ -25,16 +23,7 @@ const DojoDetailed = (props: Props) => {
         })();
     }, [id]);
 
-    return (
-        <ContainerWithRows>
-            {dojo && (
-                <Fragment>
-                    <DojoInfo title={dojo.title} link={dojo.url} isComplete={dojo.isDone} />
-                    <SolutionEditor isComplete={dojo.isDone} />
-                </Fragment>
-            )}
-        </ContainerWithRows>
-    );
+    return <Fragment>{dojo && <Solution dojo={dojo} />}</Fragment>;
 };
 
 export default DojoDetailed;
