@@ -34,13 +34,21 @@ const EditorImputs = (props: Props) => {
         <StyledImputWrapper>
             {language && editorTheme && (
                 <Fragment>
-                    <select defaultValue={language} onChange={(event) => changeLanguage(event)}>
+                    <select
+                        defaultValue={language}
+                        onChange={(event) => changeLanguage(event)}
+                        data-testid="language-dropdown"
+                    >
                         <option value="java">Java</option>
                         <option value="python">Python</option>
                         <option value="javascript">JavaScript</option>
                         <option value="csharp">C#</option>
                     </select>
-                    <select defaultValue={editorTheme} onChange={(event) => changeEditorTheme(event)}>
+                    <select
+                        defaultValue={editorTheme}
+                        onChange={(event) => changeEditorTheme(event)}
+                        data-testid="theme-dropdown"
+                    >
                         <option value="github">Light</option>
                         <option value="monokai">Dark</option>
                     </select>
