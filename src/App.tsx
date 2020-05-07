@@ -9,6 +9,7 @@ import SolutionContainer from "./components/solution/SolutionContainer";
 import DojoList from "./components/dojos/DojoList";
 import SolutionContextProvider from "./components/context/SolutionContextProvider";
 import LoginContextProvider from "./components/context/LoginContextProvider";
+import NewUser from "./components/user-management/NewUser";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Navbar />
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/register" component={NewUser} />
                     <DojoContextProvider>
                         <SolutionLanguageProvider>
                             <EditorThemeProvider>
