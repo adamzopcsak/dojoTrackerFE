@@ -5,19 +5,29 @@ import { AxiosResponse } from "axios";
 import { IBasicUserInfo } from "../../static/util/interfaces";
 import axios from "../../static/util/axiosConfig";
 import { LoginContext } from "../context/LoginContextProvider";
+import { useHistory } from "react-router-dom";
 
 interface Props {}
 
 const SignIn = (props: Props) => {
     const { setIsLoggedIn } = useContext(LoginContext);
+    const history = useHistory();
 
     const responseGoogle = (response: any) => {
         const res = response.profileObj;
 
-        axios.post(`http://localhost:5000/api/user/login`, res).then((response: AxiosResponse<IBasicUserInfo>) => {
-            localStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: true }));
-            setIsLoggedIn(true);
+        axios.post(`http://localhost:5000/api/user/login`, res).then((response: AxiosResponse<any>) => {
+            response.data.status === "newUser" ? redirectNewUser() : signInUser();
         });
+    };
+
+    const redirectNewUser = () => {
+        history.push("/register");
+    };
+
+    const signInUser = () => {
+        localStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: true }));
+        setIsLoggedIn(true);
     };
 
     return (
