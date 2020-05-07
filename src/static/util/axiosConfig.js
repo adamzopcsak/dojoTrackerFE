@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "dtbackend:5000";
 const TIMEOUT = 5000;
 
 const instance = axios.create({
