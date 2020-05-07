@@ -3,42 +3,43 @@ import { render, cleanup } from "@testing-library/react";
 import Navbar from "../components/navigation/Navbar";
 import { UserContext } from "../components/context/UserContextProvider";
 import { MemoryRouter } from "react-router-dom";
+import { LoginContext } from "../components/context/LoginContextProvider";
 
-const LoggedInStateMockComponent = ({ mockUser }) => {
+const LoggedInStateMockComponent = ({ isLoggedIn }) => {
     const setter = (s) => {
         return;
     };
 
     return (
-        <UserContext.Provider value={{ user: mockUser, setUser: setter }}>
+        <LoginContext.Provider value={{ isLoggedIn: isLoggedIn, setIsLoggedIn: setter }}>
             <MemoryRouter initialEntries={["/"]}>
                 <Navbar />
             </MemoryRouter>
-        </UserContext.Provider>
+        </LoginContext.Provider>
     );
 };
 
 afterEach(cleanup);
 
 describe("While not logged in", () => {
-    const mockUser = "";
+    const isLoggedIn = false;
 
     test("Disabled menus don't render", () => {
-        const { queryByText } = render(<LoggedInStateMockComponent mockUser={mockUser} />);
+        const { queryByText } = render(<LoggedInStateMockComponent isLoggedIn={isLoggedIn} />);
         const dojoMenu = queryByText("Dojos");
 
         expect(dojoMenu).not.toBeInTheDocument();
     });
 
     test("Sign-in button renders correctly", () => {
-        const { queryByText } = render(<LoggedInStateMockComponent mockUser={mockUser} />);
+        const { queryByText } = render(<LoggedInStateMockComponent isLoggedIn={isLoggedIn} />);
         const signInBtn = queryByText("Sign in");
 
         expect(signInBtn).toBeInTheDocument();
     });
 
     test("Log-out button doesn't render", () => {
-        const { queryByText } = render(<LoggedInStateMockComponent mockUser={mockUser} />);
+        const { queryByText } = render(<LoggedInStateMockComponent isLoggedIn={isLoggedIn} />);
         const logOutBtn = queryByText("Log out");
 
         expect(logOutBtn).not.toBeInTheDocument();
@@ -46,24 +47,24 @@ describe("While not logged in", () => {
 });
 
 describe("While logged in", () => {
-    const mockUser = { email: "email@email.com", firstName: "Béla", lastName: "Mock", id: "1", rank: "1" };
+    const isLoggedIn = true;
 
     test("Navlinks render correctly", () => {
-        const { queryByText } = render(<LoggedInStateMockComponent mockUser={mockUser} />);
+        const { queryByText } = render(<LoggedInStateMockComponent isLoggedIn={isLoggedIn} />);
         const dojoMenu = queryByText("Dojos");
 
         expect(dojoMenu).toBeInTheDocument();
     });
 
     test("Sign-in button does not render", () => {
-        const { queryByText } = render(<LoggedInStateMockComponent mockUser={mockUser} />);
+        const { queryByText } = render(<LoggedInStateMockComponent isLoggedIn={isLoggedIn} />);
         const signInBtn = queryByText("Sign in");
 
         expect(signInBtn).not.toBeInTheDocument();
     });
 
     test("Log-out renders correctly", () => {
-        const { queryByText } = render(<LoggedInStateMockComponent mockUser={mockUser} />);
+        const { queryByText } = render(<LoggedInStateMockComponent isLoggedIn={isLoggedIn} />);
         const logOutBtn = queryByText("Log out");
 
         expect(logOutBtn).toBeInTheDocument();
