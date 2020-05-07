@@ -1,7 +1,6 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
 import Navbar from "../components/navigation/Navbar";
-import { UserContext } from "../components/context/UserContextProvider";
 import { MemoryRouter } from "react-router-dom";
 import { LoginContext } from "../components/context/LoginContextProvider";
 
