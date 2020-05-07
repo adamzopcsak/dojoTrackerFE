@@ -8,7 +8,7 @@ export const Container = styled.div`
     align-items: center;
     width: 80%;
     margin: 2rem;
-    margin-top: 8%;
+    margin-top: 5%;
 
     @media screen and (max-width: 768px) {
         margin-top: 15%;
@@ -18,7 +18,6 @@ export const Container = styled.div`
 export const ContainerWithRows = styled(Container)`
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 2% !important;
 `;
 
 export const CustomLink = styled(Link)`
