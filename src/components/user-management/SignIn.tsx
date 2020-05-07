@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import GoogleLogin from "react-google-login";
 import { EmptyButton } from "../styled-components/Reusables";
 import { UserContext } from "../context/UserContextProvider";
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { IBasicUserInfo } from "../../static/util/interfaces";
+import axios from "../../static/util/axiosConfig";
 
 interface Props {}
 
