@@ -1,8 +1,8 @@
 import React, { createContext, useState, ReactNode, useContext, useEffect } from "react";
 import { IBasicDojoInfo } from "../../static/util/interfaces";
 import { AxiosResponse } from "axios";
-import { UserContext } from "./UserContextProvider";
-import axios from "axios";
+import axios from "../../static/util/axiosConfig";
+import { LoginContext } from "./LoginContextProvider";
 
 interface ContextStateProp {
     dojos: any | IBasicDojoInfo;
@@ -14,16 +14,13 @@ export const DojoContext = createContext<ContextStateProp>({} as ContextStatePro
 
 const DojoContextProvider = ({ children }: { children: ReactNode }) => {
     const [dojos, setDojos] = useState<any | IBasicDojoInfo>();
-
-    const { user } = useContext(UserContext);
+    const { isLoggedIn } = useContext(LoginContext);
 
     useEffect(() => {
-        axios
-            .get(`http://localhost:5000/api/dojo/list?id=${user.id}`)
-            .then((response: AxiosResponse<IBasicDojoInfo>) => {
-                setDojos(response.data);
-            });
-    }, [user]);
+        axios.get(`http://localhost:5000/api/dojo/list`).then((response: AxiosResponse<IBasicDojoInfo>) => {
+            setDojos(response.data);
+        });
+    }, [isLoggedIn]);
 
     const getById = async (id: string) => {
         return dojos === undefined

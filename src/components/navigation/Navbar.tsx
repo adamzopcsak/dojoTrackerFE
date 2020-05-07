@@ -4,7 +4,7 @@ import HomeLink from "./HomeLink";
 import SignIn from "../user-management/SignIn";
 import LogOut from "../user-management/LogOut";
 import NavLinks from "./NavLinks";
-import { UserContext } from "../context/UserContextProvider";
+import { LoginContext } from "../context/LoginContextProvider";
 
 const StyledNavBar = styled.nav`
     width: 90%;
@@ -28,15 +28,14 @@ const StyledNavBar = styled.nav`
 interface Props {}
 
 const Navbar = (props: Props) => {
-    const { user } = useContext(UserContext);
+    const { isLoggedIn } = useContext(LoginContext);
 
     return (
         <StyledNavBar>
             <HomeLink />
 
-            {user ? (
+            {isLoggedIn ? (
                 <Fragment>
-                    {""}
                     <NavLinks />
                     <LogOut />
                 </Fragment>

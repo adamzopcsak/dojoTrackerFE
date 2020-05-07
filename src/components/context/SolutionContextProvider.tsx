@@ -1,8 +1,8 @@
 import React, { createContext, ReactNode, useState, useContext, useEffect } from "react";
 import { IDojoSolution } from "../../static/util/interfaces";
-import axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
 import { SolutionLanguageContext } from "./SolutionLanguageProvider";
-import { UserContext } from "./UserContextProvider";
+import axios from "../../static/util/axiosConfig";
 
 interface ContextStateProp {
     solution: any | string;
@@ -17,11 +17,10 @@ const SolutionContextProvider = ({ children }: { children: ReactNode }) => {
     const [solution, setSolution] = useState<any | string>();
     const [dojoId, setDojoId] = useState<any | string>();
     const { language } = useContext(SolutionLanguageContext);
-    const { user } = useContext(UserContext);
 
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/api/solutions/${dojoId}?userId=${user.id}&language=${language}`)
+            .get(`http://localhost:5000/api/solutions/${dojoId}?&language=${language}`)
             .then((response: AxiosResponse<IDojoSolution>) => {
                 setSolution(response.data.code);
             });
@@ -31,7 +30,7 @@ const SolutionContextProvider = ({ children }: { children: ReactNode }) => {
         const solutiontoPost = {
             code: solution,
             dojoId: parseInt(dojoId),
-            userId: user.id,
+            userId: "0",
             language: language,
         };
 
