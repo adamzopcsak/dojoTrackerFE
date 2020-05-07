@@ -1,21 +1,22 @@
 import React, { useContext } from "react";
 import GoogleLogin from "react-google-login";
 import { EmptyButton } from "../styled-components/Reusables";
-import { UserContext } from "../context/UserContextProvider";
 import { AxiosResponse } from "axios";
 import { IBasicUserInfo } from "../../static/util/interfaces";
 import axios from "../../static/util/axiosConfig";
+import { LoginContext } from "../context/LoginContextProvider";
 
 interface Props {}
 
 const SignIn = (props: Props) => {
-    const { setUser } = useContext(UserContext);
+    const { setIsLoggedIn } = useContext(LoginContext);
 
     const responseGoogle = (response: any) => {
         const res = response.profileObj;
 
         axios.post(`http://localhost:5000/api/user/login`, res).then((response: AxiosResponse<IBasicUserInfo>) => {
-            console.log("THIS ISNT IMPLEMENTED YET YO");
+            localStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: true }));
+            setIsLoggedIn(true);
         });
     };
 
