@@ -2,18 +2,18 @@ import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import LandingPage from "./components/LandingPage";
 import Navbar from "./components/navigation/Navbar";
-import UserContextProvider from "./components/context/UserContextProvider";
 import DojoContextProvider from "./components/context/DojoContextProvider";
 import EditorThemeProvider from "./components/context/EditorThemeProvider";
 import SolutionLanguageProvider from "./components/context/SolutionLanguageProvider";
 import SolutionContainer from "./components/solution/SolutionContainer";
 import DojoList from "./components/dojos/DojoList";
 import SolutionContextProvider from "./components/context/SolutionContextProvider";
+import LoginContextProvider from "./components/context/LoginContextProvider";
 
 function App() {
     return (
         <Router basename="/">
-            <UserContextProvider>
+            <LoginContextProvider>
                 <Navbar />
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
@@ -28,7 +28,7 @@ function App() {
                         </SolutionLanguageProvider>
                     </DojoContextProvider>
                 </Switch>
-            </UserContextProvider>
+            </LoginContextProvider>
         </Router>
     );
 }
