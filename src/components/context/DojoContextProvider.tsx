@@ -17,14 +17,14 @@ const DojoContextProvider = ({ children }: { children: ReactNode }) => {
     const { isLoggedIn } = useContext(LoginContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/api/dojo/list`).then((response: AxiosResponse<IBasicDojoInfo>) => {
+        axios.get(`/api/dojo/list`).then((response: AxiosResponse<IBasicDojoInfo>) => {
             setDojos(response.data);
         });
     }, [isLoggedIn]);
 
     const getById = async (id: string) => {
         return dojos === undefined
-            ? (await axios.get(`http://localhost:5000/api/dojo/${id}`)).data
+            ? (await axios.get(`/api/dojo/${id}`)).data
             : dojos.find((dojo: IBasicDojoInfo) => dojo.id.toString() === id);
     };
 

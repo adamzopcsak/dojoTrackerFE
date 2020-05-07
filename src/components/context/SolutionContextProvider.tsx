@@ -19,11 +19,9 @@ const SolutionContextProvider = ({ children }: { children: ReactNode }) => {
     const { language } = useContext(SolutionLanguageContext);
 
     useEffect(() => {
-        axios
-            .get(`http://localhost:5000/api/solutions/${dojoId}?&language=${language}`)
-            .then((response: AxiosResponse<IDojoSolution>) => {
-                setSolution(response.data.code);
-            });
+        axios.get(`/api/solutions/${dojoId}?&language=${language}`).then((response: AxiosResponse<IDojoSolution>) => {
+            setSolution(response.data.code);
+        });
     }, [language, dojoId]);
 
     const postSolution = () => {
@@ -34,7 +32,7 @@ const SolutionContextProvider = ({ children }: { children: ReactNode }) => {
             language: language,
         };
 
-        axios.post("http://localhost:5000/api/solutions", solutiontoPost).catch((error) => console.log(error));
+        axios.post("/api/solutions", solutiontoPost).catch((error) => console.log(error));
     };
 
     return (

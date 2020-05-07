@@ -16,7 +16,7 @@ const SignIn = (props: Props) => {
     const responseGoogle = (response: any) => {
         const res = response.profileObj;
 
-        axios.post(`http://localhost:5000/api/user/login`, res).then((response: AxiosResponse<any>) => {
+        axios.post(`/api/user/login`, res).then((response: AxiosResponse<any>) => {
             response.data.status === "newUser" ? redirectNewUser() : signInUser();
         });
     };
