@@ -1,22 +1,25 @@
 import React, { useContext } from "react";
 import { GoogleLogout } from "react-google-login";
 import { EmptyButton } from "../styled-components/Reusables";
-import { UserContext } from "../context/UserContextProvider";
 import { useHistory } from "react-router-dom";
+import { LoginContext } from "../context/LoginContextProvider";
+import { AxiosResponse } from "axios";
+import axios from "../../static/util/axiosConfig";
 
 interface Props {}
 
 const LogOut = (props: Props) => {
-    const { setUser } = useContext(UserContext);
+    const { setIsLoggedIn } = useContext(LoginContext);
 
     const history = useHistory();
 
     const logout = () => {
-        localStorage.removeItem("dta-user-state");
-
+        console.log("loggingout");
+        axios.post(`http://localhost:5000/api/user/logout`).then((response: AxiosResponse<any>) => {
+            localStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: false }));
+            setIsLoggedIn(false);
+        });
         history.push("/");
-
-        setUser(null);
     };
 
     return (
