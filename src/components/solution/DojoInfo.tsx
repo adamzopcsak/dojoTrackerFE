@@ -42,7 +42,6 @@ const DojoInfo = (props: Props) => {
     const goToDojoPage = () => {
         window.open(props.link, "_blank");
     };
-
     return (
         <StyledWrapper>
             <h1>{props.title}</h1>
