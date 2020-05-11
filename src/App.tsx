@@ -10,6 +10,7 @@ import DojoList from "./components/dojos/DojoList";
 import SolutionContextProvider from "./components/context/SolutionContextProvider";
 import LoginContextProvider from "./components/context/LoginContextProvider";
 import NewUser from "./components/user-management/NewUser";
+import SearchContextProvider from "./components/context/SearchContextProvider";
 
 function App() {
     return (
@@ -19,16 +20,18 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/register" component={NewUser} />
-                    <DojoContextProvider>
-                        <SolutionLanguageProvider>
-                            <EditorThemeProvider>
-                                <SolutionContextProvider>
-                                    <Route exact path="/dojos" component={DojoList} />
-                                    <Route path="/dojos/:id" component={SolutionContainer} />
-                                </SolutionContextProvider>
-                            </EditorThemeProvider>
-                        </SolutionLanguageProvider>
-                    </DojoContextProvider>
+                    <SearchContextProvider>
+                        <DojoContextProvider>
+                            <SolutionLanguageProvider>
+                                <EditorThemeProvider>
+                                    <SolutionContextProvider>
+                                        <Route exact path="/dojos" component={DojoList} />
+                                        <Route path="/dojos/:id" component={SolutionContainer} />
+                                    </SolutionContextProvider>
+                                </EditorThemeProvider>
+                            </SolutionLanguageProvider>
+                        </DojoContextProvider>
+                    </SearchContextProvider>
                 </Switch>
             </LoginContextProvider>
         </Router>

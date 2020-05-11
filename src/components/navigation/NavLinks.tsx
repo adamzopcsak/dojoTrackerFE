@@ -35,6 +35,7 @@ const NavLinks = (props: Props) => {
             </li>
             <li>Ranking</li>
             <li>Profile</li>
+            <li>Admin</li>
         </StyledNavLinks>
     );
 };

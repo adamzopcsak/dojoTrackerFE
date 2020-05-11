@@ -1,12 +1,12 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import DojoBasic from "../components/dojos/DojoBasic";
+import DojoCard from "../components/dojos/DojoCard";
 
 const MockDojoCard = (props) => {
     return (
         <MemoryRouter initialEntries={["/dojos"]}>
-            <DojoBasic dojo={props.dojo} />
+            <DojoCard dojo={props.dojo} />
         </MemoryRouter>
     );
 };
