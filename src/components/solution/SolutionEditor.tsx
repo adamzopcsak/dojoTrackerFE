@@ -35,6 +35,7 @@ const StyledEditorWrapper = styled.div`
 
 interface Props {
     isComplete: boolean;
+    markAsComplete: Function;
 }
 
 const SolutionEditor = (props: Props) => {
@@ -45,6 +46,11 @@ const SolutionEditor = (props: Props) => {
 
     const changeTextInEditor = (newValue: string) => {
         setSolution(newValue);
+    };
+
+    const saveSolution = () => {
+        postSolution();
+        props.markAsComplete();
     };
 
     return (
@@ -71,7 +77,7 @@ const SolutionEditor = (props: Props) => {
                     tabSize: 2,
                 }}
             />
-            <EmptyButton onClick={() => postSolution()}>Save solution</EmptyButton>
+            <EmptyButton onClick={() => saveSolution()}>Save solution</EmptyButton>
         </StyledEditorWrapper>
     );
 };
