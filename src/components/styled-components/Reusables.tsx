@@ -7,15 +7,17 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     width: 80%;
-    margin: 2rem;
-    margin-top: 2%;
 
     @media screen and (max-width: 768px) {
         margin-top: 15%;
     }
 `;
 
-export const ContainerWithRows = styled(Container)`
+export const ContainerWithRows = styled.div`
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
 `;
@@ -55,4 +57,16 @@ export const EmptyButton = styled.button`
         background-color: ${(props) => (props.danger ? "#dc3545" : "#4d4d4d")};
         color: white;
     }
+`;
+
+export const StickyTile = styled.div`
+    height: 5rem;
+    position: sticky;
+    top: 4.8rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
