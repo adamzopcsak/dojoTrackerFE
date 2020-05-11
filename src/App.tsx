@@ -11,6 +11,7 @@ import SolutionContextProvider from "./components/context/SolutionContextProvide
 import LoginContextProvider from "./components/context/LoginContextProvider";
 import NewUser from "./components/user-management/NewUser";
 import SearchContextProvider from "./components/context/SearchContextProvider";
+import PostSucess from "./components/solution/PostSucess";
 
 function App() {
     return (
@@ -26,7 +27,8 @@ function App() {
                                 <EditorThemeProvider>
                                     <SolutionContextProvider>
                                         <Route exact path="/dojos" component={DojoList} />
-                                        <Route path="/dojos/:id" component={SolutionContainer} />
+                                        <Route exact path="/dojos/:id" component={SolutionContainer} />
+                                        <Route exact path="/dojos/:id/sucess" component={PostSucess} />
                                     </SolutionContextProvider>
                                 </EditorThemeProvider>
                             </SolutionLanguageProvider>
