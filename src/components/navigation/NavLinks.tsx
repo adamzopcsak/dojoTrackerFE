@@ -2,12 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { CustomLink } from "../styled-components/Reusables";
 
-const StyledNavLinks = styled.ul`
-    text-decoration: none;
-    list-style: none;
+const StyledNavLinks = styled.div`
     text-align: center;
 
-    & li {
+    & p {
         float: left;
         margin: 0 2rem;
         padding: 0 0.5rem;
@@ -30,12 +28,12 @@ interface Props {}
 const NavLinks = (props: Props) => {
     return (
         <StyledNavLinks>
-            <li>
+            <p>
                 <CustomLink to="/dojos">Dojos</CustomLink>
-            </li>
-            <li>Ranking</li>
-            <li>Profile</li>
-            <li>Admin</li>
+            </p>
+            <p>Ranking</p>
+            <p>Profile</p>
+            <p>Admin</p>
         </StyledNavLinks>
     );
 };
