@@ -10,6 +10,7 @@ interface ContextStateProp {
     setDojos: Function;
     getById: Function;
     listSearch: Function;
+    getTitleById: Function;
 }
 
 export const DojoContext = createContext<ContextStateProp>({} as ContextStateProp);
@@ -23,7 +24,7 @@ const DojoContextProvider = ({ children }: { children: ReactNode }) => {
         listAll();
     }, [isLoggedIn]);
 
-    const getById = async (id: string) => {
+    const getById = async (id: string): Promise<IBasicDojoInfo> => {
         return dojos === undefined
             ? (await axios.get(`/api/dojo/${id}`)).data
             : dojos.find((dojo: IBasicDojoInfo) => dojo.id.toString() === id);
@@ -45,7 +46,17 @@ const DojoContextProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
-    return <DojoContext.Provider value={{ dojos, setDojos, getById, listSearch }}>{children}</DojoContext.Provider>;
+    const getTitleById = async (id: string): Promise<string> => {
+        const dojo = await getById(id);
+
+        return dojo.title;
+    };
+
+    return (
+        <DojoContext.Provider value={{ dojos, setDojos, getById, listSearch, getTitleById }}>
+            {children}
+        </DojoContext.Provider>
+    );
 };
 
 export default DojoContextProvider;
