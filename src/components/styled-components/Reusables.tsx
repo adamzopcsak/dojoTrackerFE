@@ -7,6 +7,7 @@ export const Container = styled.div`
     justify-content: center;
     align-items: center;
     width: 80%;
+    min-height: 80vh;
 
     @media screen and (max-width: 768px) {
         margin-top: 15%;
