@@ -5,7 +5,7 @@ import { IBasicDojoInfo } from "../../static/util/interfaces";
 import { EmptyButton } from "../styled-components/Reusables";
 import StatusIndicator from "./StatusIndicator";
 
-const StyledTile = styled.div`
+const StyledCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -39,22 +39,22 @@ interface Props {
     dojo: IBasicDojoInfo;
 }
 
-const DojoBasic = (props: Props) => {
+const DojoCard = (props: Props) => {
     const history = useHistory();
 
     const redirect = (event: any): void => {
-        event.target.classList.contains("dojo-card")
-            ? history.push(`/dojos/${props.dojo.id}`)
-            : window.open(props.dojo.url, "_blank");
+        event.target.classList.contains("redirect-btn")
+            ? window.open(props.dojo.url, "_blank")
+            : history.push(`/dojos/${props.dojo.id}`);
     };
 
     return (
-        <StyledTile onClick={(event) => redirect(event)} data-testid="dojocard-container" className="dojo-card">
+        <StyledCard onClick={(event) => redirect(event)} data-testid="dojocard-container" className="dojo-card">
             <p>{props.dojo.title}</p>
             <StatusIndicator isComplete={props.dojo.isDone} />
-            <EmptyButton>Attempt</EmptyButton>
-        </StyledTile>
+            <EmptyButton className="redirect-btn">Attempt</EmptyButton>
+        </StyledCard>
     );
 };
 
-export default DojoBasic;
+export default DojoCard;
