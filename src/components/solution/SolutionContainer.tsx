@@ -21,7 +21,7 @@ const DojoDetailed = (props: Props) => {
             setDojo(dojoById);
             setDojoId(id);
         })();
-    }, [id]);
+    }, [id, getById, setDojo, setDojoId]);
 
     return <Fragment>{dojo && <Solution dojo={dojo} />}</Fragment>;
 };
