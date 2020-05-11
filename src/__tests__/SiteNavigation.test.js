@@ -1,7 +1,7 @@
 import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 import Navbar from "../components/navigation/Navbar";
-import { UserContext } from "../components/context/UserContextProvider";
+import { LoginContext } from "../components/context/LoginContextProvider";
 import { MemoryRouter, Route } from "react-router-dom";
 import DojoList from "../components/dojos/DojoList";
 import LandingPage from "../components/LandingPage";
@@ -13,7 +13,7 @@ const NavigationMockComponent = ({ mockUser, mockDojo, entries }) => {
     };
 
     return (
-        <UserContext.Provider value={{ user: mockUser, setUser: setter }}>
+        <LoginContext.Provider value={{ isLoggedIn: true, setIsLoggedIn: setter }}>
             <DojoContext.Provider value={{ dojos: mockDojo, setDojos: setter }}>
                 <MemoryRouter initialEntries={[entries]}>
                     <Navbar />
@@ -21,7 +21,7 @@ const NavigationMockComponent = ({ mockUser, mockDojo, entries }) => {
                     <Route exact path="/" component={LandingPage} />
                 </MemoryRouter>
             </DojoContext.Provider>
-        </UserContext.Provider>
+        </LoginContext.Provider>
     );
 };
 

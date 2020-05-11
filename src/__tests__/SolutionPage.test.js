@@ -5,11 +5,10 @@ import { MemoryRouter } from "react-router-dom";
 import Solution from "../components/solution/Solution";
 import { SolutionLanguageContext } from "../components/context/SolutionLanguageProvider";
 import { EditorThemeContext } from "../components/context/EditorThemeProvider";
-import { UserContext } from "../components/context/UserContextProvider";
+import { LoginContext } from "../components/context/LoginContextProvider";
 
 const MockSolutionPage = (props) => {
     const mockDojo = { id: 1, title: "Testdojo 1", description: "", difficulty: 1, url: "google.com", isDone: true };
-    const mockUser = { email: "email@email.com", firstName: "Béla", lastName: "Mock", id: "1", rank: "1" };
     const mockSolution = { dojoId: 1, userId: 1, language: "python", code: "Code" };
     const mockLanguage = "python";
     const mockTheme = "monokai";
@@ -20,7 +19,7 @@ const MockSolutionPage = (props) => {
 
     return (
         <MemoryRouter initialEntries={["/dojos/1"]}>
-            <UserContext.Provider value={{ user: mockUser, setUser: mockSetter }}>
+            <LoginContext.Provider value={{ isLoggedIn: true, setIsLoggedIn: mockSetter }}>
                 <EditorThemeContext.Provider value={{ editorTheme: mockTheme, setEditorTheme: mockSetter }}>
                     <SolutionLanguageContext.Provider value={{ language: mockLanguage, setLanguage: mockSetter }}>
                         <SolutionContext.Provider
@@ -35,7 +34,7 @@ const MockSolutionPage = (props) => {
                         </SolutionContext.Provider>
                     </SolutionLanguageContext.Provider>
                 </EditorThemeContext.Provider>
-            </UserContext.Provider>
+            </LoginContext.Provider>
         </MemoryRouter>
     );
 };
