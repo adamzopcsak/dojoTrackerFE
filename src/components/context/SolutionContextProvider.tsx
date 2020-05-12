@@ -19,6 +19,7 @@ const SolutionContextProvider = ({ children }: { children: ReactNode }) => {
     const { language } = useContext(SolutionLanguageContext);
 
     useEffect(() => {
+        console.log("this is being called");
         axios.get(`/api/solutions/${dojoId}?&language=${language}`).then((response: AxiosResponse<IDojoSolution>) => {
             setSolution(response.data.code);
         });
@@ -28,7 +29,6 @@ const SolutionContextProvider = ({ children }: { children: ReactNode }) => {
         const solutiontoPost = {
             code: solution,
             dojoId: parseInt(dojoId),
-            userId: "0",
             language: language,
         };
 
