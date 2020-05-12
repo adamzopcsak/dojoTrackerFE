@@ -15,6 +15,8 @@ import PostSucess from "./components/solution/PostSucess";
 import NoPageFound from "./components/routing/NoPageFound";
 import LoginRedirect from "./components/user-management/LoginRedirect";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import AdminPage from "./components/admin/AdminPage";
+import UserStatContextProvider from "./components/context/UserStatContextProvider";
 
 function App() {
     return (
@@ -24,23 +26,31 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/register" component={NewUser} />
+
+                    <PrivateRoute exact path="/admin">
+                        <UserStatContextProvider>
+                            <AdminPage />
+                        </UserStatContextProvider>
+                    </PrivateRoute>
                     <SearchContextProvider>
                         <DojoContextProvider>
                             <SolutionLanguageProvider>
                                 <EditorThemeProvider>
-                                    <SolutionContextProvider>
-                                        <PrivateRoute exact path="/dojos">
-                                            <DojoList />
-                                        </PrivateRoute>
-                                        <PrivateRoute exact path="/dojos/:id">
+                                    <PrivateRoute exact path="/dojos">
+                                        <DojoList />
+                                    </PrivateRoute>
+
+                                    <PrivateRoute exact path="/dojos/:id">
+                                        <SolutionContextProvider>
                                             <SolutionContainer />
-                                        </PrivateRoute>
-                                        <PrivateRoute exact path="/dojos/:id/sucess">
-                                            <PostSucess />
-                                        </PrivateRoute>
-                                        <Route exact path="/login" component={LoginRedirect} />
-                                        <Route path="*" component={NoPageFound} />
-                                    </SolutionContextProvider>
+                                        </SolutionContextProvider>
+                                    </PrivateRoute>
+
+                                    <PrivateRoute exact path="/dojos/:id/sucess">
+                                        <PostSucess />
+                                    </PrivateRoute>
+                                    <Route exact path="/login" component={LoginRedirect} />
+                                    <Route path="*" component={NoPageFound} />
                                 </EditorThemeProvider>
                             </SolutionLanguageProvider>
                         </DojoContextProvider>
