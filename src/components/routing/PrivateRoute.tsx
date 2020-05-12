@@ -1,15 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, ReactNode } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { LoginContext } from "../context/LoginContextProvider";
 
-function PrivateRoute({ children, ...rest }: any) {
-    const { isLoggedIn } = useContext(LoginContext);
+interface Props {
+    children: ReactNode;
+    [k: string]: any;
+}
+
+function PrivateRoute({ children, ...rest }: Props) {
+    const { checkForLoginStatus } = useContext(LoginContext);
 
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                isLoggedIn ? (
+                checkForLoginStatus() ? (
                     children
                 ) : (
                     <Redirect
