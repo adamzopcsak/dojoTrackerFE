@@ -3,7 +3,6 @@ import { IDojoSolution } from "../../static/util/interfaces";
 import { AxiosResponse } from "axios";
 import { SolutionLanguageContext } from "./SolutionLanguageProvider";
 import axios from "../../static/util/axiosConfig";
-import { stringify } from "querystring";
 
 interface ContextStateProp {
     solution: any | string;
