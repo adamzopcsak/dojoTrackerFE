@@ -21,3 +21,11 @@ export interface IDojoSolution {
     code: string;
     language: string;
 }
+
+export interface IUserStatistics {
+    firstName: string;
+    lastName: string;
+    completedDojoIds: number[];
+    lastCompleted: any;
+    userId: string;
+}
