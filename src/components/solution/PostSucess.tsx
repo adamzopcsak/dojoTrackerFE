@@ -6,7 +6,8 @@ import { useParams, useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const SuccessContainer = styled(Container)`
-    align-text: center;
+    text-align: center;
+
     & span {
         color: #dc3545;
     }
@@ -31,7 +32,7 @@ const PostSucess = () => {
         getTitleById(id).then((response: string) => {
             setTitle(response);
         });
-    }, []);
+    });
 
     const goNew = () => {
         history.push("/dojos");
