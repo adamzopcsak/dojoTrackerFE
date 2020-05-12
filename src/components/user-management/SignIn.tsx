@@ -37,7 +37,6 @@ const SignIn = (props: Props) => {
     const redirectUser = () => {
         if (location.pathname === "/login") {
             history.replace(from);
-            console.log(from);
         }
 
         return;
