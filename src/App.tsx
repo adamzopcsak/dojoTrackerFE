@@ -12,6 +12,9 @@ import LoginContextProvider from "./components/context/LoginContextProvider";
 import NewUser from "./components/user-management/NewUser";
 import SearchContextProvider from "./components/context/SearchContextProvider";
 import PostSucess from "./components/solution/PostSucess";
+import NoPageFound from "./components/routing/NoPageFound";
+import LoginRedirect from "./components/user-management/LoginRedirect";
+import PrivateRoute from "./components/routing/PrivateRoute";
 
 function App() {
     return (
@@ -26,9 +29,17 @@ function App() {
                             <SolutionLanguageProvider>
                                 <EditorThemeProvider>
                                     <SolutionContextProvider>
-                                        <Route exact path="/dojos" component={DojoList} />
-                                        <Route exact path="/dojos/:id" component={SolutionContainer} />
-                                        <Route exact path="/dojos/:id/sucess" component={PostSucess} />
+                                        <PrivateRoute exact path="/dojos">
+                                            <DojoList />
+                                        </PrivateRoute>
+                                        <PrivateRoute exact path="/dojos/:id">
+                                            <SolutionContainer />
+                                        </PrivateRoute>
+                                        <PrivateRoute exact path="/dojos/:id/sucess">
+                                            <PostSucess />
+                                        </PrivateRoute>
+                                        <Route exact path="/login" component={LoginRedirect} />
+                                        <Route path="*" component={NoPageFound} />
                                     </SolutionContextProvider>
                                 </EditorThemeProvider>
                             </SolutionLanguageProvider>
