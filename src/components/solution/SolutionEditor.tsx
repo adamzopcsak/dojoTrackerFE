@@ -42,10 +42,10 @@ const SolutionEditor = (props: Props) => {
     const { language } = useContext(SolutionLanguageContext);
     const { editorTheme } = useContext(EditorThemeContext);
 
-    const { solution, setSolution, postSolution } = useContext(SolutionContext);
+    const { solution, updateSolution, postSolution } = useContext(SolutionContext);
 
     const changeTextInEditor = (newValue: string) => {
-        setSolution(newValue);
+        updateSolution(newValue);
     };
 
     const saveSolution = () => {

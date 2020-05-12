@@ -1,12 +1,13 @@
-import React, { createContext, ReactNode, useState, useContext, useEffect } from "react";
+import React, { createContext, ReactNode, useState, useContext, useEffect, useCallback } from "react";
 import { IDojoSolution } from "../../static/util/interfaces";
 import { AxiosResponse } from "axios";
 import { SolutionLanguageContext } from "./SolutionLanguageProvider";
 import axios from "../../static/util/axiosConfig";
+import { stringify } from "querystring";
 
 interface ContextStateProp {
     solution: any | string;
-    setSolution: Function;
+    updateSolution: Function;
     postSolution: Function;
     setDojoId: Function;
 }
@@ -35,8 +36,15 @@ const SolutionContextProvider = ({ children }: { children: ReactNode }) => {
         axios.post("/api/solutions", solutiontoPost).catch((error) => console.log(error));
     };
 
+    const updateSolution = useCallback(
+        (s: string) => {
+            setSolution(s);
+        },
+        [setSolution]
+    );
+
     return (
-        <SolutionContext.Provider value={{ solution, setSolution, postSolution, setDojoId }}>
+        <SolutionContext.Provider value={{ solution, updateSolution, postSolution, setDojoId }}>
             {children}
         </SolutionContext.Provider>
     );
