@@ -25,7 +25,7 @@ const MockSolutionPage = (props) => {
                         <SolutionContext.Provider
                             value={{
                                 solution: mockSolution.code,
-                                setSolution: mockSetter,
+                                updateSolution: mockSetter,
                                 setDojoId: mockSetter,
                                 postSolution: mockSetter,
                             }}
