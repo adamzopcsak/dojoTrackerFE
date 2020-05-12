@@ -2,16 +2,19 @@ import React, { useContext } from "react";
 import GoogleLogin from "react-google-login";
 import { EmptyButton } from "../styled-components/Reusables";
 import { AxiosResponse } from "axios";
-import { IBasicUserInfo } from "../../static/util/interfaces";
 import axios from "../../static/util/axiosConfig";
 import { LoginContext } from "../context/LoginContextProvider";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 interface Props {}
 
 const SignIn = (props: Props) => {
     const { setIsLoggedIn } = useContext(LoginContext);
     const history = useHistory();
+
+    const location = useLocation();
+
+    const { from }: any = location.state || { from: { pathname: "/" } };
 
     const responseGoogle = (response: any) => {
         const res = response.profileObj;
@@ -28,6 +31,16 @@ const SignIn = (props: Props) => {
     const signInUser = () => {
         localStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: true }));
         setIsLoggedIn(true);
+        redirectUser();
+    };
+
+    const redirectUser = () => {
+        if (location.pathname === "/login") {
+            history.replace(from);
+            console.log(from);
+        }
+
+        return;
     };
 
     return (
