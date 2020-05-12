@@ -24,7 +24,7 @@ const requestHandler = (request) => {
 const errorHandler = (error, user) => {
     if (isHandlerEnabled(error.config)) {
         if (error.response) {
-            if (error.response.status == 500) {
+            if (error.response.status === 500) {
                 console.log(error);
 
                 // history.push("/500");
