@@ -7,7 +7,7 @@ install:
   - npm ci
 
 script: 
-  - npm test
+  - npm test -- --watchAll=false
 
 notifications:
   email:
