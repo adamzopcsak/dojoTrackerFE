@@ -1,19 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container } from "../styled-components/Reusables";
 import styled from "styled-components";
-import UserStats from "./UserStats";
+import UserStatsContainer from "./UserStatsContainer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { UserStatContext } from "../context/UserStatContextProvider";
 
 const CustomContainer = styled(Container)`
-    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    align-items: flex-start;
+    margin-top: 3rem;
+
+    & span {
+        margin: 0 0.5rem;
+        color: #dc3545;
+    }
+
+    & h3:hover {
+        cursor: pointer;
+    }
 `;
 
 interface Props {}
 
 const AdminPage = (props: Props) => {
+    const { isHidden, setIsHidden } = useContext(UserStatContext);
+
     return (
         <CustomContainer>
-            <h3>Users</h3>
-            <UserStats />
+            <div>
+                <h3
+                    onClick={() => {
+                        setIsHidden(!isHidden);
+                    }}
+                >
+                    Users
+                    <span>
+                        <FontAwesomeIcon icon={isHidden ? faChevronDown : faChevronUp} size="lg" />
+                    </span>
+                </h3>
+            </div>
+            {!isHidden && <UserStatsContainer />}
         </CustomContainer>
     );
 };
