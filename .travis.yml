@@ -10,10 +10,5 @@ script:
   - npm test -- --watchAll=false
 
 notifications:
-  email:
-    recipients:
-      - adamzopcsak@gmail.com
-      - kgalmos@gmail.com
-      - gyula.g.hodosi@gmail.com
-    on_success: always
-    on_failure: always
+  email: adamzopcsak@gmail.com
+    
