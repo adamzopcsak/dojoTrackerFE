@@ -1,7 +1,6 @@
 import React, { useContext, Fragment } from "react";
 import styled from "styled-components";
-import { SolutionLanguageContext } from "../context/SolutionLanguageProvider";
-import { EditorThemeContext } from "../context/EditorThemeProvider";
+import { SolutionContext } from "../context/SolutionContextProvider";
 
 const StyledImputWrapper = styled.div`
     width: 100%;
@@ -19,20 +18,19 @@ const StyledImputWrapper = styled.div`
 interface Props {}
 
 const EditorImputs = (props: Props) => {
-    const { language, setLanguage } = useContext(SolutionLanguageContext);
-    const { editorTheme, setEditorTheme } = useContext(EditorThemeContext);
+    const { language, theme, setTheme, setLanguage } = useContext(SolutionContext);
 
     const changeLanguage = (event: any) => {
         setLanguage(event.target.value);
     };
 
     const changeEditorTheme = (event: any) => {
-        setEditorTheme(event.target.value);
+        setTheme(event.target.value);
     };
 
     return (
         <StyledImputWrapper>
-            {language && editorTheme && (
+            {language && theme && (
                 <Fragment>
                     <select
                         defaultValue={language}
@@ -45,7 +43,7 @@ const EditorImputs = (props: Props) => {
                         <option value="csharp">C#</option>
                     </select>
                     <select
-                        defaultValue={editorTheme}
+                        defaultValue={theme}
                         onChange={(event) => changeEditorTheme(event)}
                         data-testid="theme-dropdown"
                     >
