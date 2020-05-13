@@ -27,7 +27,7 @@ const LoginContextProvider = ({ children }: { children: ReactNode }) => {
 
     const checkForLoginStatus = (): boolean => {
         try {
-            const serializedState = localStorage.getItem("dta-login-state");
+            const serializedState = sessionStorage.getItem("dta-login-state");
             if (serializedState === null) return false;
             return JSON.parse(serializedState).isLoggedIn;
         } catch (err) {

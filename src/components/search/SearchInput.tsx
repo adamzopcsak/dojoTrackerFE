@@ -27,7 +27,7 @@ interface Props {
 }
 
 const SearchInput = (props: Props) => {
-    const { setSearchValue } = useContext(SearchContext);
+    const { updateSearchValue } = useContext(SearchContext);
 
     const searchOnKeydown = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter") {
@@ -43,7 +43,7 @@ const SearchInput = (props: Props) => {
                 placeholder={props.searchFor ? `Search for ${props.searchFor}...` : "Search..."}
                 type="text"
                 name="name"
-                onChange={(e) => setSearchValue(e.target.value)}
+                onChange={(e) => updateSearchValue(e.target.value)}
                 autoComplete="off"
                 onKeyDown={(event) => searchOnKeydown(event)}
             ></StyledSearchInput>

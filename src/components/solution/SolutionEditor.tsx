@@ -10,8 +10,6 @@ import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/theme-github";
 import EditorImputs from "./EditorImputs";
-import { SolutionLanguageContext } from "../context/SolutionLanguageProvider";
-import { EditorThemeContext } from "../context/EditorThemeProvider";
 import { EmptyButton } from "../styled-components/Reusables";
 import { SolutionContext } from "../context/SolutionContextProvider";
 
@@ -39,10 +37,7 @@ interface Props {
 }
 
 const SolutionEditor = (props: Props) => {
-    const { language } = useContext(SolutionLanguageContext);
-    const { editorTheme } = useContext(EditorThemeContext);
-
-    const { solution, updateSolution, postSolution } = useContext(SolutionContext);
+    const { solution, language, theme, updateSolution, postSolution } = useContext(SolutionContext);
 
     const changeTextInEditor = (newValue: string) => {
         updateSolution(newValue);
@@ -61,7 +56,7 @@ const SolutionEditor = (props: Props) => {
                 placeholder="Copy or type your solution here, then press save. DO NOT FORGET TO PRESS SAVE!!44!4"
                 defaultValue={""}
                 mode={language}
-                theme={editorTheme}
+                theme={theme}
                 name={`solutin`}
                 onChange={(value: string) => changeTextInEditor(value)}
                 fontSize={14}

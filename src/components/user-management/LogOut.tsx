@@ -16,7 +16,7 @@ const LogOut = (props: Props) => {
     const logout = () => {
         console.log("loggingout");
         axios.post(`/api/user/logout`).then((response: AxiosResponse<any>) => {
-            localStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: false }));
+            sessionStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: false }));
             setIsLoggedIn(false);
         });
         history.push("/");

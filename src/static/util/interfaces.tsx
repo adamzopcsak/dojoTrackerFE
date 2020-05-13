@@ -25,7 +25,9 @@ export interface IDojoSolution {
 export interface IUserStatistics {
     firstName: string;
     lastName: string;
+    email: string;
     completedDojoIds: number[];
+    score: number;
     lastCompleted: any;
     userId: string;
 }

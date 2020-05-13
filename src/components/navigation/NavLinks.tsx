@@ -33,7 +33,9 @@ const NavLinks = (props: Props) => {
             </p>
             <p>Ranking</p>
             <p>Profile</p>
-            <p>Admin</p>
+            <p>
+                <CustomLink to="/admin">Admin</CustomLink>
+            </p>
         </StyledNavLinks>
     );
 };

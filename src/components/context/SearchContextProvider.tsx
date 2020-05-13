@@ -1,16 +1,23 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useState, useCallback } from "react";
 
 interface ContextStateProp {
     searchValue: any;
-    setSearchValue: Function;
+    updateSearchValue: Function;
 }
 
 export const SearchContext = createContext({} as ContextStateProp);
 
 const SearchContextProvider = ({ children }: { children: ReactNode }) => {
-    const [searchValue, setSearchValue] = useState();
+    const [searchValue, setSearchValue] = useState<any | string>();
 
-    return <SearchContext.Provider value={{ searchValue, setSearchValue }}>{children}</SearchContext.Provider>;
+    const updateSearchValue = useCallback(
+        (s: string) => {
+            setSearchValue(s);
+        },
+        [setSearchValue]
+    );
+
+    return <SearchContext.Provider value={{ searchValue, updateSearchValue }}>{children}</SearchContext.Provider>;
 };
 
 export default SearchContextProvider;
