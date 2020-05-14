@@ -1,14 +1,18 @@
 import React from "react";
 import { HeaderTile } from "../styled-components/Reusables";
 
-const UserTableHeader = () => {
+const UserTableHeader = ({ onClick }: { onClick: Function }) => {
     return (
-        <HeaderTile>
-            <p>Name</p>
-            <p>Email</p>
-            <p>Completed dojos</p>
-            <p>Score</p>
-            <p>Last completed</p>
+        <HeaderTile
+            onClick={(e) => {
+                onClick(e);
+            }}
+        >
+            <p data-reference="lastName">Name</p>
+            <p data-reference="email">Email</p>
+            <p data-reference="numOfCompletedDojos">Completed dojos</p>
+            <p data-reference="score">Score</p>
+            <p data-reference="lastCompleted">Last completed</p>
         </HeaderTile>
     );
 };
