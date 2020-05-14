@@ -129,6 +129,7 @@ export const HeaderTile = styled.div`
 
     & p:first-child {
         text-align: left !important;
+        font-weight: bold !important;
     }
 
     & p:last-child {
