@@ -30,4 +30,15 @@ export interface IUserStatistics {
     score: number;
     lastCompleted: any;
     userId: string;
+    numOfCompletedDojos: number;
+}
+
+export interface IDojoStatistics {
+    id: number;
+    name: string;
+    difficulty: number;
+    solvedUserIds: string[];
+    numOfUsersSolved: number;
+    mostFrequentlySolvedInLanguage: { [key: string]: number };
+    leastFrequentlySolvedInLanguage: { [key: string]: number };
 }
