@@ -3,7 +3,7 @@ import { IUserStatistics } from "../../static/util/interfaces";
 import { DataTile } from "../styled-components/Reusables";
 
 const UserStatTile = ({ userStats }: { userStats: IUserStatistics }) => {
-    const date = new Date(Date.parse(userStats.lastCompleted));
+    const date = userStats.lastCompleted;
 
     const stringifiedDate =
         date.getFullYear() +
@@ -16,15 +16,9 @@ const UserStatTile = ({ userStats }: { userStats: IUserStatistics }) => {
         ":" +
         date.getMinutes();
 
-    const numberOfDojosCompleted = ((): number => {
-        return userStats.completedDojoIds.length;
-    })();
-
     const redirectToEmail = () => {
         window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${userStats.email}`, "_blank");
     };
-
-    console.log(userStats);
 
     return (
         <DataTile>
@@ -32,7 +26,7 @@ const UserStatTile = ({ userStats }: { userStats: IUserStatistics }) => {
                 {userStats.firstName} {userStats.lastName}
             </p>
             <p onClick={redirectToEmail}>{userStats.email}</p>
-            <p>{numberOfDojosCompleted}</p>
+            <p>{userStats.numOfCompletedDojos}</p>
             <p>{userStats.score}</p>
             <p>{stringifiedDate}</p>
         </DataTile>
