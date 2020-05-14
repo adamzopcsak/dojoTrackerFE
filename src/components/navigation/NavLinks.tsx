@@ -10,11 +10,29 @@ const StyledNavLinks = styled.div`
         margin: 0 2rem;
         padding: 0 0.5rem;
         letter-spacing: 0.2rem;
+        position: relative;
 
         &:hover {
-            border-bottom: 2px solid black;
-            padding-bottom: 6px;
             cursor: pointer;
+        }
+
+        &::after {
+            position: absolute;
+            top: 30px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            width: 0%;
+            content: ".";
+            color: transparent;
+            background: black;
+            height: 3px;
+            transition: all 0.5s;
+        }
+
+        &:hover::after {
+            width: 100%;
         }
     }
 
