@@ -19,9 +19,14 @@ const DojoStatContextProvider = ({ children }: { children: ReactNode }) => {
     const [isDesc, setIsDesc] = useState<boolean>(true);
 
     useEffect(() => {
-        axios.get("/api/stats/dojos").then((response: AxiosResponse<IDojoStatistics[]>) => {
-            setDojoStats(response.data.sort(sortDescByValue("name")));
-        });
+        axios
+            .get("/api/stats/dojos")
+            .then((response: AxiosResponse<IDojoStatistics[]>) => {
+                setDojoStats(response.data.sort(sortDescByValue("name")));
+            })
+            .catch((err: any) => {
+                console.log(err);
+            });
     }, []);
 
     const sortData = (value: string) => {
