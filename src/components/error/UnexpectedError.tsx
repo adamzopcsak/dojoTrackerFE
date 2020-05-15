@@ -1,7 +1,7 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { Container, EmptyButton } from "../styled-components/Reusables";
 import styled from "styled-components";
+import { Container, EmptyButton } from "../styled-components/Reusables";
+import { useHistory } from "react-router-dom";
 
 const CustomContainer = styled(Container)`
     & button {
@@ -9,19 +9,19 @@ const CustomContainer = styled(Container)`
     }
 `;
 
-const NoPageFound = () => {
+const UnexpectedError = () => {
     const history = useHistory();
 
     const goBack = () => {
-        history.goBack();
+        history.push("/");
     };
 
     return (
         <CustomContainer>
-            <h3>The page you are looking for does not exist or have been removed.</h3>
+            <h3>An unexpected error has occured, please try again later</h3>
             <EmptyButton onClick={goBack}>Back</EmptyButton>
         </CustomContainer>
     );
 };
 
-export default NoPageFound;
+export default UnexpectedError;
