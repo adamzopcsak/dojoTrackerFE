@@ -100,6 +100,7 @@ export const DataTile = styled.div`
 
     & p:first-child {
         text-align: left !important;
+        font-weight: bold !important;
     }
 
     & p:last-child {
@@ -118,18 +119,25 @@ export const HeaderTile = styled.div`
     padding: 0.5rem;
     margin: 0.3rem;
     border-radius: 8px;
+    color: #aaa;
 
     & p {
         flex-grow: 1;
         width: 100%; // Default to full width
         padding: 0.8rem 1.2rem;
         overflow: hidden; // Or flex might break
+        align-self: center;
         text-align: center;
+        transition: all 0.5s;
+
+        &:hover {
+            cursor: pointer;
+            color: black;
+        }
     }
 
     & p:first-child {
         text-align: left !important;
-        font-weight: bold !important;
     }
 
     & p:last-child {
