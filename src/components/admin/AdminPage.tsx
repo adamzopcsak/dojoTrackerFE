@@ -8,6 +8,7 @@ const CustomContainer = styled(Container)`
     justify-content: flex-start !important;
     align-items: flex-start;
     margin-top: 3rem;
+    margin-bottom: 3rem;
 
     & span {
         margin: 0 0.5rem;
