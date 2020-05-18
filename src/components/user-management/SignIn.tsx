@@ -29,7 +29,7 @@ const SignIn = (props: Props) => {
     };
 
     const signInUser = () => {
-        localStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: true }));
+        sessionStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: true }));
         setIsLoggedIn(true);
         redirectUser();
     };
@@ -52,7 +52,9 @@ const SignIn = (props: Props) => {
                         Sign in
                     </EmptyButton>
                 )}
+                cookiePolicy={"single_host_origin"}
                 onSuccess={responseGoogle}
+                isSignedIn={true}
                 onFailure={() => console.log("?????????????")}
             />
         </div>

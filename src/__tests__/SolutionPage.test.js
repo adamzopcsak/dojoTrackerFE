@@ -3,8 +3,6 @@ import { render, cleanup } from "@testing-library/react";
 import { SolutionContext } from "../components/context/SolutionContextProvider";
 import { MemoryRouter } from "react-router-dom";
 import Solution from "../components/solution/Solution";
-import { SolutionLanguageContext } from "../components/context/SolutionLanguageProvider";
-import { EditorThemeContext } from "../components/context/EditorThemeProvider";
 import { LoginContext } from "../components/context/LoginContextProvider";
 
 const MockSolutionPage = (props) => {
@@ -20,20 +18,20 @@ const MockSolutionPage = (props) => {
     return (
         <MemoryRouter initialEntries={["/dojos/1"]}>
             <LoginContext.Provider value={{ isLoggedIn: true, setIsLoggedIn: mockSetter }}>
-                <EditorThemeContext.Provider value={{ editorTheme: mockTheme, setEditorTheme: mockSetter }}>
-                    <SolutionLanguageContext.Provider value={{ language: mockLanguage, setLanguage: mockSetter }}>
-                        <SolutionContext.Provider
-                            value={{
-                                solution: mockSolution.code,
-                                updateSolution: mockSetter,
-                                setDojoId: mockSetter,
-                                postSolution: mockSetter,
-                            }}
-                        >
-                            <Solution dojo={mockDojo} />
-                        </SolutionContext.Provider>
-                    </SolutionLanguageContext.Provider>
-                </EditorThemeContext.Provider>
+                <SolutionContext.Provider
+                    value={{
+                        solution: mockSolution.code,
+                        language: mockLanguage,
+                        theme: mockTheme,
+                        updateSolution: mockSetter,
+                        setDojoId: mockSetter,
+                        postSolution: mockSetter,
+                        setLanguage: mockSetter,
+                        setTheme: mockSetter,
+                    }}
+                >
+                    <Solution dojo={mockDojo} />
+                </SolutionContext.Provider>
             </LoginContext.Provider>
         </MemoryRouter>
     );

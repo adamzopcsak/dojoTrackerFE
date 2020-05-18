@@ -71,3 +71,76 @@ export const StickyTile = styled.div`
     align-items: center;
     justify-content: center;
 `;
+
+export const DataTile = styled.div`
+    display: flex;
+    flex-direction: row;
+    max-height: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border: 1px solid gray;
+    padding: 1.3rem;
+    margin: 0.3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    & p {
+        flex-grow: 1;
+        width: 100%; // Default to full width
+        padding: 0.8rem 1.2rem;
+        overflow: hidden; // Or flex might break
+        text-align: center;
+    }
+
+    & p:first-child {
+        text-align: left !important;
+        font-weight: bold !important;
+    }
+
+    & p:last-child {
+        text-align: right;
+    }
+`;
+
+export const HeaderTile = styled.div`
+    display: flex;
+    flex-direction: row;
+    max-height: 2rem;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin: 0.3rem;
+    border-radius: 8px;
+    color: #aaa;
+
+    & p {
+        flex-grow: 1;
+        width: 100%; // Default to full width
+        padding: 0.8rem 1.2rem;
+        overflow: hidden; // Or flex might break
+        align-self: center;
+        text-align: center;
+        transition: all 0.5s;
+
+        &:hover {
+            cursor: pointer;
+            color: black;
+        }
+    }
+
+    & p:first-child {
+        text-align: left !important;
+    }
+
+    & p:last-child {
+        text-align: right;
+    }
+`;

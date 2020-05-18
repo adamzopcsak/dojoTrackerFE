@@ -1,10 +1,23 @@
 import React from "react";
 import { Container } from "../styled-components/Reusables";
 import styled from "styled-components";
-import UserStats from "./UserStats";
+import UserStatsContainer from "./UserStatsContainer";
+import DojoStatContainer from "./DojoStatContainer";
 
 const CustomContainer = styled(Container)`
-    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    align-items: flex-start;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    & span {
+        margin: 0 0.5rem;
+        color: #dc3545;
+    }
+
+    & h3:hover {
+        cursor: pointer;
+    }
 `;
 
 interface Props {}
@@ -12,8 +25,8 @@ interface Props {}
 const AdminPage = (props: Props) => {
     return (
         <CustomContainer>
-            <h3>Users</h3>
-            <UserStats />
+            <UserStatsContainer />
+            <DojoStatContainer />
         </CustomContainer>
     );
 };

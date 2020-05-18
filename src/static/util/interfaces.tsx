@@ -25,7 +25,20 @@ export interface IDojoSolution {
 export interface IUserStatistics {
     firstName: string;
     lastName: string;
+    email: string;
     completedDojoIds: number[];
+    score: number;
     lastCompleted: any;
     userId: string;
+    numOfCompletedDojos: number;
+}
+
+export interface IDojoStatistics {
+    id: number;
+    name: string;
+    difficulty: number;
+    solvedUserIds: string[];
+    numOfUsersSolved: number;
+    mostFrequentlySolvedInLanguage: { [key: string]: number };
+    leastFrequentlySolvedInLanguage: { [key: string]: number };
 }

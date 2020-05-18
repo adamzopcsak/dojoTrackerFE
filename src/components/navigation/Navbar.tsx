@@ -7,11 +7,11 @@ import NavLinks from "./NavLinks";
 import { LoginContext } from "../context/LoginContextProvider";
 
 const StyledNavBar = styled.nav`
-    width: 100%;
+    width: 90%;
     max-width: 100%;
     height: 8vh;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     z-index: 1;
     color: black;
