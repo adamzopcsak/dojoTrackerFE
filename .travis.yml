@@ -6,7 +6,7 @@ services:
   - docker
 
 script: 
-  - npm test -- --watchAll=false
+  - docker run .
 
 notification:
   email:
