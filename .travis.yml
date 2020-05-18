@@ -1,10 +1,9 @@
-language: node_js
-node_js:
-  - 10
-cache: npm
+language: bash
 
-install: 
-  - npm ci
+sudo: required
+
+services:
+  - docker
 
 script: 
   - npm test -- --watchAll=false
