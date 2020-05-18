@@ -9,6 +9,12 @@ install:
 script: 
   - npm test -- --watchAll=false
 
-notifications:
-  email: adamzopcsak@gmail.com
+notification:
+  email:
+      recipients:
+          - adamzopcsak@gmail.com
+          - kgalmos@gmail.com
+          - gyula.g.hodosi@gmail.com
+      on_success: always
+      on_failure: always
     
