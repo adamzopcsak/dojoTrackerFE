@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { CustomLink } from "../styled-components/Reusables";
+import { UserDataContext } from "../context/UserDataContextProvider";
 
 const StyledNavLinks = styled.div`
     text-align: center;
@@ -18,7 +19,7 @@ const StyledNavLinks = styled.div`
 
         &::after {
             position: absolute;
-            top: 30px;
+            top: 25px;
             bottom: 0;
             left: 0;
             right: 0;
@@ -27,7 +28,7 @@ const StyledNavLinks = styled.div`
             content: ".";
             color: transparent;
             background: black;
-            height: 3px;
+            height: 2px;
             transition: all 0.5s;
         }
 
@@ -41,9 +42,9 @@ const StyledNavLinks = styled.div`
     }
 `;
 
-interface Props {}
+const NavLinks = () => {
+    const { user } = useContext(UserDataContext);
 
-const NavLinks = (props: Props) => {
     return (
         <StyledNavLinks>
             <p>
@@ -51,9 +52,11 @@ const NavLinks = (props: Props) => {
             </p>
             <p>Ranking</p>
             <p>Profile</p>
-            <p>
-                <CustomLink to="/admin">Admin</CustomLink>
-            </p>
+            {user && user.isAdmin && (
+                <p>
+                    <CustomLink to="/admin">Admin</CustomLink>
+                </p>
+            )}
         </StyledNavLinks>
     );
 };
