@@ -7,7 +7,6 @@ services:
 
 script: 
   - docker build -t adamzopcsak/dojotrackerfe .
-  - docker run -d adamzopcsak/dojotrackerfe
 
 notification:
   email:
