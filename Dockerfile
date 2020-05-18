@@ -4,5 +4,5 @@ WORKDIR '/app'
 COPY package*.json ./
 RUN npm install
 COPY . .
-RUN npm test
+RUN npm test -- --watchAll=false
 CMD ["npm", "start"]
