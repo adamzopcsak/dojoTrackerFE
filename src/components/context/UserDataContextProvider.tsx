@@ -6,6 +6,7 @@ import { LoginContext } from "./LoginContextProvider";
 
 interface ContextStateProp {
     user: any;
+    isLoading: boolean;
     setUser: Function;
 }
 
@@ -14,14 +15,17 @@ export const UserDataContext = createContext<ContextStateProp>({} as ContextStat
 const UserDataContextProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<any | IBasicUserInfo>();
     const { isLoggedIn } = useContext(LoginContext);
+    const [isLoading, setIsLoading] = useState<any | boolean>();
 
     useEffect(() => {
+        setIsLoading(true);
         axios.get("/api/user/user").then((response: AxiosResponse<any>) => {
             setUser(response.data);
+            setIsLoading(false);
         });
     }, [isLoggedIn]);
 
-    return <UserDataContext.Provider value={{ user, setUser }}>{children}</UserDataContext.Provider>;
+    return <UserDataContext.Provider value={{ user, isLoading, setUser }}>{children}</UserDataContext.Provider>;
 };
 
 export default UserDataContextProvider;
