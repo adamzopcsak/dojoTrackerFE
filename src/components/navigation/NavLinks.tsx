@@ -1,17 +1,17 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { CustomLink } from "../styled-components/Reusables";
-import { UserDataContext } from "../context/UserDataContextProvider";
 
 const StyledNavLinks = styled.div`
     text-align: center;
 
     & p {
         float: left;
-        margin: 0 2rem;
+        margin: 0 0.5rem;
         padding: 0 0.5rem;
         letter-spacing: 0.2rem;
         position: relative;
+        font-size: 0.9rem;
 
         &:hover {
             cursor: pointer;
@@ -37,14 +37,12 @@ const StyledNavLinks = styled.div`
         }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1280px) {
         display: none;
     }
 `;
 
 const NavLinks = () => {
-    const { user } = useContext(UserDataContext);
-
     return (
         <StyledNavLinks>
             <p>
@@ -52,11 +50,6 @@ const NavLinks = () => {
             </p>
             <p>Ranking</p>
             <p>Profile</p>
-            {user && user.isAdmin && (
-                <p>
-                    <CustomLink to="/admin">Admin</CustomLink>
-                </p>
-            )}
         </StyledNavLinks>
     );
 };
