@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 80%;
     min-height: 80vh;
@@ -21,6 +21,13 @@ export const ContainerWithRows = styled.div`
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
+`;
+
+export const CenteredContainer = styled(Container)`
+    justify-content: center;
+    & button {
+        margin: 1rem 2rem;
+    }
 `;
 
 export const CustomLink = styled(Link)`
@@ -61,12 +68,12 @@ export const EmptyButton = styled.button`
 `;
 
 export const StickyTile = styled.div`
-    height: 5rem;
+    height: 2rem;
     position: sticky;
-    top: 4.8rem;
-    background-color: rgba(255, 255, 255, 0.8);
+    top: 4.5rem;
+    background-color: rgba(255, 255, 255, 1);
     z-index: 1;
-    width: 100%;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;

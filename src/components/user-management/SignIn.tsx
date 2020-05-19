@@ -60,7 +60,7 @@ const SignIn = (props: Props) => {
                 cookiePolicy={"single_host_origin"}
                 onSuccess={responseGoogle}
                 isSignedIn={true}
-                onFailure={() => console.log("?????????????")}
+                onFailure={() => history.push("/error")}
             />
         </div>
     );
