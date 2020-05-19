@@ -4,6 +4,7 @@ import { AxiosResponse } from "axios";
 import axios from "../../static/util/axiosConfig";
 import { LoginContext } from "./LoginContextProvider";
 import { SearchContext } from "./SearchContextProvider";
+import { useHistory } from "react-router-dom";
 
 interface ContextStateProp {
     dojos: any | IBasicDojoInfo;
@@ -19,6 +20,7 @@ const DojoContextProvider = ({ children }: { children: ReactNode }) => {
     const [dojos, setDojos] = useState<any | IBasicDojoInfo>();
     const { isLoggedIn } = useContext(LoginContext);
     const { searchValue } = useContext(SearchContext);
+    const history = useHistory();
 
     useEffect(() => {
         listAll();
@@ -44,6 +46,8 @@ const DojoContextProvider = ({ children }: { children: ReactNode }) => {
                 setDojos(response.data);
             });
         }
+
+        history.push("/dojos");
     };
 
     const getTitleById = async (id: string): Promise<string> => {

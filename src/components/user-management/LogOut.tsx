@@ -5,21 +5,24 @@ import { useHistory } from "react-router-dom";
 import { LoginContext } from "../context/LoginContextProvider";
 import { AxiosResponse } from "axios";
 import axios from "../../static/util/axiosConfig";
+import { UserDataContext } from "../context/UserDataContextProvider";
 
 interface Props {}
 
 const LogOut = (props: Props) => {
     const { setIsLoggedIn } = useContext(LoginContext);
 
+    const { setUser } = useContext(UserDataContext);
+
     const history = useHistory();
 
     const logout = () => {
-        console.log("loggingout");
         axios.post(`/api/user/logout`).then((response: AxiosResponse<any>) => {
             sessionStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: false }));
             setIsLoggedIn(false);
+            setUser(null);
         });
-        history.push("/");
+        window.location.href = "/";
     };
 
     return (
@@ -32,6 +35,7 @@ const LogOut = (props: Props) => {
                     </EmptyButton>
                 )}
                 onLogoutSuccess={logout}
+                onFailure={() => history.push("/error")}
             />
         </div>
     );

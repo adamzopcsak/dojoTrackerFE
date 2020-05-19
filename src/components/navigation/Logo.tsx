@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import CCLogo from "../misc/CCLogo";
 
 const StyledLogo = styled.img`
     width: 3rem;
-    margin: 0 1rem;
 `;
 
 interface Props {}
 
 const Logo = (props: Props) => {
-    return <StyledLogo src={require("../../static/img/codecool_logo.png")} alt="Code Cool logo" />;
+    return <CCLogo />;
 };
 
 export default Logo;

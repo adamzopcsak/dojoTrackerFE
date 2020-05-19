@@ -20,6 +20,10 @@ import DojoStatContextProvider from "./components/context/DojoStatContextProvide
 import UnexpectedError from "./components/error/UnexpectedError";
 import { setup } from "./static/util/axiosConfig";
 import customHistory from "./static/util/customHistory";
+import UserDataContextProvider from "./components/context/UserDataContextProvider";
+import AdminRoute from "./components/routing/AdminRoute";
+import NoAccess from "./components/error/NoAccess";
+import AdminPageLink from "./components/admin/AdminPageLink";
 
 function App() {
     setup.setupInterceptors();
@@ -27,36 +31,40 @@ function App() {
     return (
         <Router history={customHistory}>
             <LoginContextProvider>
-                <Navbar />
-                <SearchContextProvider>
-                    <DojoContextProvider>
-                        <SolutionContextProvider>
-                            <Switch>
-                                <PrivateRoute exact path="/dojos">
-                                    <DojoList />
-                                </PrivateRoute>
-                                <PrivateRoute exact path="/dojos/:id">
-                                    <SolutionContainer />
-                                </PrivateRoute>
-                                <PrivateRoute exact path="/dojos/:id/sucess">
-                                    <PostSucess />
-                                </PrivateRoute>
-                                <PrivateRoute exact path="/admin">
-                                    <UserStatContextProvider>
-                                        <DojoStatContextProvider>
-                                            <AdminPage />
-                                        </DojoStatContextProvider>
-                                    </UserStatContextProvider>
-                                </PrivateRoute>
-                                <Route exact path="/" component={LandingPage} />
-                                <Route exact path="/register" component={NewUser} />
-                                <Route exact path="/login" component={LoginRedirect} />
-                                <Route exact path="/error" component={UnexpectedError} />
-                                <Route component={NoPageFound} />
-                            </Switch>
-                        </SolutionContextProvider>
-                    </DojoContextProvider>
-                </SearchContextProvider>
+                <UserDataContextProvider>
+                    <SearchContextProvider>
+                        <DojoContextProvider>
+                            <Navbar />
+                            <AdminPageLink />
+                            <SolutionContextProvider>
+                                <Switch>
+                                    <PrivateRoute exact path="/dojos">
+                                        <DojoList />
+                                    </PrivateRoute>
+                                    <PrivateRoute exact path="/dojos/:id">
+                                        <SolutionContainer />
+                                    </PrivateRoute>
+                                    <PrivateRoute exact path="/dojos/:id/sucess">
+                                        <PostSucess />
+                                    </PrivateRoute>
+                                    <AdminRoute exact path="/admin">
+                                        <UserStatContextProvider>
+                                            <DojoStatContextProvider>
+                                                <AdminPage />
+                                            </DojoStatContextProvider>
+                                        </UserStatContextProvider>
+                                    </AdminRoute>
+                                    <Route exact path="/" component={LandingPage} />
+                                    <Route exact path="/register" component={NewUser} />
+                                    <Route exact path="/login" component={LoginRedirect} />
+                                    <Route exact path="/noaccess" component={NoAccess} />
+                                    <Route exact path="/error" component={UnexpectedError} />
+                                    <Route component={NoPageFound} />
+                                </Switch>
+                            </SolutionContextProvider>
+                        </DojoContextProvider>
+                    </SearchContextProvider>
+                </UserDataContextProvider>
             </LoginContextProvider>
         </Router>
     );
