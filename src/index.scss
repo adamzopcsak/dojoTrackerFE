@@ -3,16 +3,16 @@
 body {
     font-family: "Karla", sans-serif;
     font-size: 1em;
+    margin: 0;
+    padding: 0;
 }
+
 #root {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
-    margin: 0;
-    padding: 0;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -22,4 +22,89 @@ body {
 img {
     user-select: none;
     -webkit-user-drag: none;
+}
+
+.scrolling {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
+    width: 100% !important;
+
+    & * {
+        margin: 0 1.5rem;
+    }
+
+}
+
+.select {
+    position: relative;
+    width: 25%;
+    margin: 2rem 5rem;
+}
+
+.select-text {
+    position: relative;
+    font-family: inherit;
+    background-color: transparent;
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    border: 2px solid rgba(0, 0, 0, 0.12);
+}
+
+/* Remove focus */
+.select-text:focus {
+    outline: none;
+    border: 2px solid #dc3545;
+}
+
+/* Use custom arrow */
+.select .select-text {
+    appearance: none;
+    -webkit-appearance: none;
+    color: gray;
+}
+
+.select:after {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    /* Styling the down arrow */
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid rgba(0, 0, 0, 0.12);
+
+    pointer-events: none;
+}
+
+/* LABEL ======================================= */
+.select-label {
+    color: rgba(0, 0, 0, 0.26);
+    background: white;
+    font-size: 0.5rem;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    padding: 0 5px;
+    left: 8%;
+    top: 40%;
+    transition: 0.2s ease all;
+}
+
+
+/* active state */
+.select-text:focus~.select-label,
+.select-text:valid~.select-label {
+    color: #dc3545;
+    top: -20%;
+
+    transition: 0.2s ease all;
+    font-size: 14px;
+}
+
+.select-text:valid:focus~.select-label {
+    color: #dc3545;
 }
