@@ -1,11 +1,14 @@
 import React from "react";
 import { Container } from "./styled-components/Reusables";
+import styled from "styled-components";
 
-interface Props {}
+const StyledLandingPage = styled(Container)`
+    padding: 2rem 0;
+`;
 
-const LandingPage = (props: Props) => {
+const LandingPage = () => {
     return (
-        <Container>
+        <StyledLandingPage>
             <h1>Hi Codecooler, and welcome to the Mastery Branch!</h1>
             <div>
                 <p>
@@ -32,18 +35,23 @@ const LandingPage = (props: Props) => {
                 <h2>Why is it good for you?</h2>
                 <p>
                     First of all, DojoTracker (what a surprise) is tracking the dojos for you! What is more, you are
-                    going to be able to: - See your statistics and progress - See your solutions in different languages
-                    - See other Codecoolers’ solutions (once you solved that dojo as well) - See the rankings of all
-                    Codecoolers on the Mastery Branch - Ask for a code review from a mentor - Go to the top of the high
-                    score table!
+                    going to be able to:
                 </p>
+                <ul>
+                    <li>See your statistics and progress</li>
+                    <li>See your solutions in different languages</li>
+                    <li>See other Codecoolers’ solutions (once you solved that dojo as well)</li>
+                    <li>See the rankings of all Codecoolers on the Mastery Branch</li>
+                    <li>Ask for a code review from a mentor</li>
+                    <li>Go to the top of the high score table!</li>
+                </ul>
                 <p>
                     Please keep in mind that this site is currently under development, and some features have not been
                     implemented yet. You can read the patch notes from the current release on the “News” page, once you
                     are logged in. May the code be with you!
                 </p>
             </div>
-        </Container>
+        </StyledLandingPage>
     );
 };
 
