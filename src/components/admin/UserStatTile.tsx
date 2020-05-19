@@ -6,15 +6,17 @@ const UserStatTile = ({ userStats }: { userStats: IUserStatistics }) => {
     const date = userStats.lastCompleted;
 
     const stringifiedDate =
-        date.getFullYear() +
-        "/" +
-        (date.getMonth() + 1) +
-        "/" +
-        date.getUTCDate() +
-        " " +
-        date.getHours() +
-        ":" +
-        date.getMinutes();
+        date === null
+            ? "None"
+            : date.getFullYear() +
+              "/" +
+              (date.getMonth() + 1) +
+              "/" +
+              date.getUTCDate() +
+              " " +
+              date.getHours() +
+              ":" +
+              date.getMinutes();
 
     const redirectToEmail = () => {
         window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${userStats.email}`, "_blank");

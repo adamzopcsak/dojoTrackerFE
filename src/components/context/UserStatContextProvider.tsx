@@ -36,8 +36,8 @@ const UserStatContextProvider = ({ children }: { children: ReactNode }) => {
         setIsDesc(!isDesc);
     };
 
-    const normalizeDate = (date: string): Date => {
-        return new Date(Date.parse(date));
+    const normalizeDate = (date: string): Date | null => {
+        return date === null ? null : new Date(Date.parse(date));
     };
 
     return (
