@@ -23,6 +23,7 @@ import customHistory from "./static/util/customHistory";
 import UserDataContextProvider from "./components/context/UserDataContextProvider";
 import AdminRoute from "./components/routing/AdminRoute";
 import NoAccess from "./components/error/NoAccess";
+import AdminPageLink from "./components/admin/AdminPageLink";
 
 function App() {
     setup.setupInterceptors();
@@ -31,9 +32,10 @@ function App() {
         <Router history={customHistory}>
             <LoginContextProvider>
                 <UserDataContextProvider>
-                    <Navbar />
                     <SearchContextProvider>
                         <DojoContextProvider>
+                            <Navbar />
+                            <AdminPageLink />
                             <SolutionContextProvider>
                                 <Switch>
                                     <PrivateRoute exact path="/dojos">
