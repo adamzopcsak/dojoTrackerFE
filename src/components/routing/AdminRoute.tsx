@@ -1,4 +1,4 @@
-import React, { useContext, ReactNode } from "react";
+import React, { useContext, ReactNode, Fragment } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { LoginContext } from "../context/LoginContextProvider";
 import { UserDataContext } from "../context/UserDataContextProvider";
@@ -15,18 +15,21 @@ function AdminRoute({ children, ...rest }: Props) {
     return (
         <Route
             {...rest}
-            render={({ location }) =>
-                checkForLoginStatus() && user.isAdmin ? (
-                    children
-                ) : (
-                    <Redirect
-                        to={{
-                            pathname: "/noaccess",
-                            state: { from: location },
-                        }}
-                    />
-                )
-            }
+            render={({ location }) => (
+                <Fragment>
+                    {user &&
+                        (checkForLoginStatus() && user.isAdmin ? (
+                            children
+                        ) : (
+                            <Redirect
+                                to={{
+                                    pathname: "/noaccess",
+                                    state: { from: location },
+                                }}
+                            />
+                        ))}
+                </Fragment>
+            )}
         />
     );
 }
