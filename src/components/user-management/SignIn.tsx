@@ -5,11 +5,14 @@ import { AxiosResponse } from "axios";
 import axios from "../../static/util/axiosConfig";
 import { LoginContext } from "../context/LoginContextProvider";
 import { useHistory, useLocation } from "react-router-dom";
+import { UserDataContext } from "../context/UserDataContextProvider";
+import { IBasicUserInfo } from "../../static/util/interfaces";
 
 interface Props {}
 
 const SignIn = (props: Props) => {
     const { setIsLoggedIn } = useContext(LoginContext);
+    const { setUser } = useContext(UserDataContext);
     const history = useHistory();
 
     const location = useLocation();
@@ -20,7 +23,7 @@ const SignIn = (props: Props) => {
         const res = response.profileObj;
 
         axios.post(`/api/user/login`, res).then((response: AxiosResponse<any>) => {
-            response.data.status === "newUser" ? redirectNewUser() : signInUser();
+            response.data.status === "newUser" ? redirectNewUser() : signInUser(response.data);
         });
     };
 
@@ -28,9 +31,11 @@ const SignIn = (props: Props) => {
         history.push("/register");
     };
 
-    const signInUser = () => {
+    const signInUser = (user: IBasicUserInfo) => {
         sessionStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: true }));
         setIsLoggedIn(true);
+        setUser(user);
+        console.log(user);
         redirectUser();
     };
 
@@ -55,7 +60,7 @@ const SignIn = (props: Props) => {
                 cookiePolicy={"single_host_origin"}
                 onSuccess={responseGoogle}
                 isSignedIn={true}
-                onFailure={() => console.log("?????????????")}
+                onFailure={() => history.push("/error")}
             />
         </div>
     );

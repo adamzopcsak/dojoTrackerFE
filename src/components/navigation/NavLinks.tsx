@@ -7,10 +7,11 @@ const StyledNavLinks = styled.div`
 
     & p {
         float: left;
-        margin: 0 2rem;
+        margin: 0 0.5rem;
         padding: 0 0.5rem;
         letter-spacing: 0.2rem;
         position: relative;
+        font-size: 0.9rem;
 
         &:hover {
             cursor: pointer;
@@ -18,7 +19,7 @@ const StyledNavLinks = styled.div`
 
         &::after {
             position: absolute;
-            top: 30px;
+            top: 25px;
             bottom: 0;
             left: 0;
             right: 0;
@@ -27,7 +28,7 @@ const StyledNavLinks = styled.div`
             content: ".";
             color: transparent;
             background: black;
-            height: 3px;
+            height: 2px;
             transition: all 0.5s;
         }
 
@@ -36,14 +37,12 @@ const StyledNavLinks = styled.div`
         }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1280px) {
         display: none;
     }
 `;
 
-interface Props {}
-
-const NavLinks = (props: Props) => {
+const NavLinks = () => {
     return (
         <StyledNavLinks>
             <p>
@@ -51,9 +50,6 @@ const NavLinks = (props: Props) => {
             </p>
             <p>Ranking</p>
             <p>Profile</p>
-            <p>
-                <CustomLink to="/admin">Admin</CustomLink>
-            </p>
         </StyledNavLinks>
     );
 };

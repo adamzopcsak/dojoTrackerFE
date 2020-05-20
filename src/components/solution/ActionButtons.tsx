@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { EmptyButton } from "../styled-components/Reusables";
-import StatusIndicator from "../dojos/StatusIndicator";
+import { SolutionContext } from "../context/SolutionContextProvider";
 
 const StyledWrapper = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    width: 25%;
+    width: 50%;
     height: auto;
     font-size: 0.9rem;
     text-align: center;
@@ -27,30 +27,26 @@ const StyledWrapper = styled.div`
 
     & p,
     button {
-        margin: 2rem;
-        font-size: 1.2rem;
+        margin: 0.5rem;
     }
 `;
 
 interface Props {
-    title: string;
     link: string;
-    isComplete: boolean;
+    onSave: Function;
 }
 
-const DojoInfo = (props: Props) => {
+const ActionButtons = (props: Props) => {
     const goToDojoPage = () => {
         window.open(props.link, "_blank");
     };
+
     return (
         <StyledWrapper>
-            <h1>{props.title}</h1>
-
-            <StatusIndicator isComplete={props.isComplete} />
-
             <EmptyButton onClick={goToDojoPage}>Attempt</EmptyButton>
+            <EmptyButton onClick={() => props.onSave()}>Save solution</EmptyButton>
         </StyledWrapper>
     );
 };
 
-export default DojoInfo;
+export default ActionButtons;

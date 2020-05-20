@@ -7,14 +7,14 @@ const StyledSearchBar = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 40%;
-    height: 2.5rem;
+    min-width: 20%;
+    height: 2rem;
     border-radius: 4px;
     border-color: rgb(137, 160, 181);
     border-width: 0.04vw;
     background: white;
     border-style: solid;
-    transition: height 0.2s ease-in-out;
+    position: relative;
 
     &:focus-within {
         background-color: white;

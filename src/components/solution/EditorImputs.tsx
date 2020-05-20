@@ -3,16 +3,12 @@ import styled from "styled-components";
 import { SolutionContext } from "../context/SolutionContextProvider";
 
 const StyledImputWrapper = styled.div`
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     text-align: center;
-
-    & select {
-        margin: 3rem;
-    }
 `;
 
 interface Props {}
@@ -32,24 +28,34 @@ const EditorImputs = (props: Props) => {
         <StyledImputWrapper>
             {language && theme && (
                 <Fragment>
-                    <select
-                        defaultValue={language}
-                        onChange={(event) => changeLanguage(event)}
-                        data-testid="language-dropdown"
-                    >
-                        <option value="java">Java</option>
-                        <option value="python">Python</option>
-                        <option value="javascript">JavaScript</option>
-                        <option value="csharp">C#</option>
-                    </select>
-                    <select
-                        defaultValue={theme}
-                        onChange={(event) => changeEditorTheme(event)}
-                        data-testid="theme-dropdown"
-                    >
-                        <option value="github">Light</option>
-                        <option value="monokai">Dark</option>
-                    </select>
+                    <div className="select">
+                        <select
+                            onChange={(event) => changeLanguage(event)}
+                            defaultValue={language}
+                            data-testid="language-dropdown"
+                            className="select-text"
+                            required
+                        >
+                            <option value="java">Java</option>
+                            <option value="python">Python</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="csharp">C#</option>
+                        </select>
+                        <label className="select-label">Language</label>
+                    </div>
+                    <div className="select">
+                        <select
+                            defaultValue={theme}
+                            onChange={(event) => changeEditorTheme(event)}
+                            data-testid="theme-dropdown"
+                            className="select-text"
+                            required
+                        >
+                            <option value="github">Light</option>
+                            <option value="monokai">Dark</option>
+                        </select>
+                        <label className="select-label">Theme</label>
+                    </div>
                 </Fragment>
             )}
         </StyledImputWrapper>

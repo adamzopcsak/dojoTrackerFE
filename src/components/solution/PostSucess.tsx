@@ -7,6 +7,7 @@ import { SolutionContext } from "../context/SolutionContextProvider";
 
 const SuccessContainer = styled(Container)`
     text-align: center;
+    justify-content: center;
 
     & span {
         color: #dc3545;

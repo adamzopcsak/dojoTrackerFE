@@ -10,7 +10,10 @@ const StyledSearchButton = styled.button`
     outline: inherit;
     border: none;
     cursor: pointer;
-    padding: 0.5vh 1vw;
+    position: absolute;
+    top: 20%;
+    left: 75%;
+    transition: 1000ms ease;
 `;
 
 interface Props {
@@ -20,7 +23,7 @@ interface Props {
 const SearchButton = (props: Props) => {
     return (
         <StyledSearchButton>
-            <FontAwesomeIcon icon={faSearch} onClick={() => props.search()} size="lg" />
+            <FontAwesomeIcon icon={faSearch} onClick={() => props.search()} size="1x" />
         </StyledSearchButton>
     );
 };
