@@ -24,6 +24,8 @@ import UserDataContextProvider from "./components/context/UserDataContextProvide
 import AdminRoute from "./components/routing/AdminRoute";
 import NoAccess from "./components/error/NoAccess";
 import AdminPageLink from "./components/admin/AdminPageLink";
+import RankingPage from "./components/ranking/RankingPage";
+import RankingContextProvider from "./components/context/RankingContextProvider";
 
 function App() {
     setup.setupInterceptors();
@@ -46,6 +48,11 @@ function App() {
                                     </PrivateRoute>
                                     <PrivateRoute exact path="/dojos/:id/sucess">
                                         <PostSucess />
+                                    </PrivateRoute>
+                                    <PrivateRoute exact path="/ranking">
+                                        <RankingContextProvider>
+                                            <RankingPage />
+                                        </RankingContextProvider>
                                     </PrivateRoute>
                                     <AdminRoute exact path="/admin">
                                         <UserStatContextProvider>
