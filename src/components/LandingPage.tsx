@@ -48,8 +48,13 @@ const LandingPage = () => {
                 <p>
                     Please keep in mind that this site is currently under development, and some features have not been
                     implemented yet. You can read the patch notes from the current release on the “News” page, once you
-                    are logged in. May the code be with you!
+                    are logged in.
                 </p>
+                <p>
+                    If you notice any issues, instead of complaining to us, you may fix it yourself since the repos are
+                    all public, you lazy bastard.
+                </p>
+                <p> May the code be with you!</p>
             </div>
         </StyledLandingPage>
     );
