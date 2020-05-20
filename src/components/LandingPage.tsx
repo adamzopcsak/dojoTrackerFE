@@ -8,7 +8,7 @@ const StyledLandingPage = styled(Container)`
 
 const LandingPage = () => {
     return (
-        <StyledLandingPage>
+        <StyledLandingPage data-testid="landing-readme">
             <h1>Hi Codecooler, and welcome to the Mastery Branch!</h1>
             <div>
                 <p>

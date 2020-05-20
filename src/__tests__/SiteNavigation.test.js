@@ -46,12 +46,12 @@ describe("When I click on", () => {
     });
 
     test("the title or logo the site renders the frontpage", () => {
-        const { queryByText } = render(
+        const { queryByTestId } = render(
             <NavigationMockComponent mockUser={mockUser} mockDojo={mockDojo} entries={"/dojos"} />
         );
 
-        fireEvent.click(queryByText("Dojo Tracker"));
+        fireEvent.click(queryByTestId("homelink"));
 
-        expect(queryByText("ASD")).toBeInTheDocument();
+        expect(queryByTestId("landing-readme")).toBeInTheDocument();
     });
 });

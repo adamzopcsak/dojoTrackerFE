@@ -6,7 +6,7 @@ afterEach(cleanup);
 
 test("Renders without crashing", () => {
     const { getByText } = render(<LandingPage />);
-    const landingPageTitle = getByText("ASD");
+    const landingPageTitle = getByText(/Hi Codecooler/i);
 
     expect(landingPageTitle).toBeInTheDocument();
 });
