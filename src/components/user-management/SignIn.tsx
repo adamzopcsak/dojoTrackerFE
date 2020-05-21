@@ -35,7 +35,6 @@ const SignIn = (props: Props) => {
         sessionStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: true }));
         setIsLoggedIn(true);
         setUser(user);
-        console.log(user);
         redirectUser();
     };
 
@@ -52,15 +51,12 @@ const SignIn = (props: Props) => {
             <GoogleLogin
                 clientId="314849626272-joeuug43b7lrbgvgqt71kqbarvn8nnes.apps.googleusercontent.com"
                 buttonText="Sign in"
-                render={(renderProps) => (
-                    <EmptyButton onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                        Sign in
-                    </EmptyButton>
-                )}
+                render={(renderProps) => <EmptyButton onClick={renderProps.onClick}>Sign in</EmptyButton>}
                 cookiePolicy={"single_host_origin"}
                 onSuccess={responseGoogle}
                 isSignedIn={true}
                 onFailure={() => history.push("/error")}
+                uxMode="redirect"
             />
         </div>
     );

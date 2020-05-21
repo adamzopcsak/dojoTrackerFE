@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import { EmptyButton } from "../styled-components/Reusables";
-import { SolutionContext } from "../context/SolutionContextProvider";
 
 const StyledWrapper = styled.div`
     display: flex;
