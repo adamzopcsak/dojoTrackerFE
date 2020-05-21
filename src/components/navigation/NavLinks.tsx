@@ -48,7 +48,9 @@ const NavLinks = () => {
             <p>
                 <CustomLink to="/dojos">Dojos</CustomLink>
             </p>
-            <p>Ranking</p>
+            <p>
+                <CustomLink to="/ranking">Ranking</CustomLink>
+            </p>
             <p>Profile</p>
         </StyledNavLinks>
     );
