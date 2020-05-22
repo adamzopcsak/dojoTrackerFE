@@ -13,9 +13,9 @@ script:
 notification:
   email:
       recipients:
-          - adamzopcsak@gmail.com
-          - kgalmos@gmail.com
-          - gyula.g.hodosi@gmail.com
+          - $DEVELOPER_EMAIL_1
+          - $DEVELOPER_EMAIL_2
+          - $DEVELOPER_EMAIL_3
       on_success: never
       on_failure: always
     
