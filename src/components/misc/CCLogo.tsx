@@ -28,8 +28,8 @@ function CCLogo() {
                     y2="9.63278"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.512968" stop-color="#DB3F41" />
-                    <stop offset="0.72976" stop-color="#961D1D" />
+                    <stop offset="0.512968" stopColor="#DB3F41" />
+                    <stop offset="0.72976" stopColor="#961D1D" />
                 </linearGradient>
                 <linearGradient
                     id="paint1_linear"
@@ -39,8 +39,8 @@ function CCLogo() {
                     y2="-0.0747333"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.494181" stop-color="#4C98CB" />
-                    <stop offset="0.740341" stop-color="#28638A" />
+                    <stop offset="0.494181" stopColor="#4C98CB" />
+                    <stop offset="0.740341" stopColor="#28638A" />
                 </linearGradient>
                 <linearGradient
                     id="paint2_linear"
@@ -50,8 +50,8 @@ function CCLogo() {
                     y2="5.18896"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.266826" stop-color="#28638A" />
-                    <stop offset="0.476837" stop-color="#4C98CB" />
+                    <stop offset="0.266826" stopColor="#28638A" />
+                    <stop offset="0.476837" stopColor="#4C98CB" />
                 </linearGradient>
                 <linearGradient
                     id="paint3_linear"
@@ -61,8 +61,8 @@ function CCLogo() {
                     y2="1.65631"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop offset="0.260417" stop-color="#961D1D" />
-                    <stop offset="0.543421" stop-color="#DB3F41" />
+                    <stop offset="0.260417" stopColor="#961D1D" />
+                    <stop offset="0.543421" stopColor="#DB3F41" />
                 </linearGradient>
             </defs>
         </svg>
