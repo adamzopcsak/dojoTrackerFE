@@ -61,6 +61,7 @@ const SignIn = (props: Props) => {
                 onSuccess={responseGoogle}
                 isSignedIn={true}
                 onFailure={() => history.push("/error")}
+                uxMode="popup"
             />
         </div>
     );
