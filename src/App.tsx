@@ -29,6 +29,7 @@ import RankingContextProvider from "./components/context/RankingContextProvider"
 
 function App() {
     setup.setupInterceptors();
+    require("dotenv").config();
 
     return (
         <Router history={customHistory}>
