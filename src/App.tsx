@@ -31,6 +31,8 @@ function App() {
     setup.setupInterceptors();
     require("dotenv").config();
 
+    console.log(process.env.API_URL);
+
     return (
         <Router history={customHistory}>
             <LoginContextProvider>
