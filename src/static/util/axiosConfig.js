@@ -1,7 +1,10 @@
 import axios from "axios";
 import customHistory from "./customHistory";
+import runtimeEnv from "@mars/heroku-js-runtime-env";
 
-const API_URL = process.env.API_URL;
+const env = runtimeEnv();
+
+const API_URL = env.REACT_APP_API_URL;
 const TIMEOUT = 5000;
 
 const instance = axios.create({
