@@ -26,12 +26,14 @@ import NoAccess from "./components/error/NoAccess";
 import AdminPageLink from "./components/admin/AdminPageLink";
 import RankingPage from "./components/ranking/RankingPage";
 import RankingContextProvider from "./components/context/RankingContextProvider";
+import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 function App() {
-    setup.setupInterceptors();
-    require("dotenv").config();
+    const env = runtimeEnv();
 
-    console.log(process.env.API_URL);
+    console.log(env.REACT_APP_API_URL);
+
+    setup.setupInterceptors();
 
     return (
         <Router history={customHistory}>
