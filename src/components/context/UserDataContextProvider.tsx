@@ -18,11 +18,13 @@ const UserDataContextProvider = ({ children }: { children: ReactNode }) => {
     const [isLoading, setIsLoading] = useState<any | boolean>();
 
     useEffect(() => {
-        setIsLoading(true);
-        axios.get("/api/user/user").then((response: AxiosResponse<any>) => {
-            setUser(response.data);
-            setIsLoading(false);
-        });
+        if (isLoggedIn === true) {
+            setIsLoading(true);
+            axios.get("/api/user/user").then((response: AxiosResponse<any>) => {
+                setUser(response.data);
+                setIsLoading(false);
+            });
+        }
     }, [isLoggedIn]);
 
     return <UserDataContext.Provider value={{ user, isLoading, setUser }}>{children}</UserDataContext.Provider>;
