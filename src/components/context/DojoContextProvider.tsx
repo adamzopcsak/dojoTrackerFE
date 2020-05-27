@@ -23,7 +23,9 @@ const DojoContextProvider = ({ children }: { children: ReactNode }) => {
     const history = useHistory();
 
     useEffect(() => {
-        listAll();
+        if (isLoggedIn === true) {
+            listAll();
+        }
     }, [isLoggedIn]);
 
     const getById = async (id: string): Promise<IBasicDojoInfo> => {
