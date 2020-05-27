@@ -26,13 +26,8 @@ import NoAccess from "./components/error/NoAccess";
 import AdminPageLink from "./components/admin/AdminPageLink";
 import RankingPage from "./components/ranking/RankingPage";
 import RankingContextProvider from "./components/context/RankingContextProvider";
-import runtimeEnv from "@mars/heroku-js-runtime-env";
 
 function App() {
-    const env = runtimeEnv();
-
-    console.log(env.REACT_APP_API_URL);
-
     setup.setupInterceptors();
 
     return (
