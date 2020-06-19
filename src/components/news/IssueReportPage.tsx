@@ -37,7 +37,7 @@ const IssueReportPage = (props: Props) => {
     const history = useHistory();
 
     const submitIssue = () => {
-        if (!validateForm()) console.log("Empty");
+        if (!validateForm()) return;
 
         let issueToPost = {
             type: type,
