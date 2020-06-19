@@ -8,10 +8,18 @@ const RankingTableHeaders = ({ onClick }: { onClick: Function }) => {
                 onClick(e);
             }}
         >
-            <p data-reference="rank">Rank</p>
-            <p data-reference="lastName">Name</p>
-            <p data-reference="numOfCompletedDojos">Completed dojos</p>
-            <p data-reference="score">Score</p>
+            <p data-reference="rank" id="rank-sort-btn">
+                Rank
+            </p>
+            <p data-reference="lastName" id="name-sort-btn">
+                Name
+            </p>
+            <p data-reference="numOfCompletedDojos" id="numberofdojos-sort-btn">
+                Completed dojos
+            </p>
+            <p data-reference="score" id="score-sort-btn">
+                Score
+            </p>
         </HeaderTile>
     );
 };

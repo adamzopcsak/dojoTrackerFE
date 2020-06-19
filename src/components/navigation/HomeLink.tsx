@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import Logo from "./Logo";
 import { useHistory } from "react-router-dom";
+import TitleLogo from "../misc/TitleLogo";
 
 const StyledHomeLink = styled.div`
-    margin-left: 1rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -26,9 +26,9 @@ const HomeLink = (props: Props) => {
     };
 
     return (
-        <StyledHomeLink onClick={redirectHome} data-testid="homelink">
+        <StyledHomeLink onClick={redirectHome}  id="home-btn">
             <Logo />
-            <h1>Dojo Tracker</h1>
+            <TitleLogo />
         </StyledHomeLink>
     );
 };

@@ -46,6 +46,8 @@ const SearchInput = (props: Props) => {
                 onChange={(e) => updateSearchValue(e.target.value)}
                 autoComplete="off"
                 onKeyDown={(event) => searchOnKeydown(event)}
+                className="search-bar"
+                id="search-bar"
             ></StyledSearchInput>
         </Fragment>
     );

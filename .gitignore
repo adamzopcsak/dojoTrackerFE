@@ -27,3 +27,5 @@ package-lock.json
 package-lock.json
 src/index.css
 src/index.css.map
+
+.idea

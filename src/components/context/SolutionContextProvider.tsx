@@ -1,60 +1,44 @@
-import React, { createContext, ReactNode, useState, useEffect, useCallback, useContext } from "react";
+import React, { createContext, useState, ReactNode } from "react";
 import { IDojoSolution } from "../../static/util/interfaces";
-import { AxiosResponse } from "axios";
 import axios from "../../static/util/axiosConfig";
-import { LoginContext } from "./LoginContextProvider";
+import { AxiosResponse } from "axios";
+import { normalizeDate } from "../../static/util/util";
+import { sortAscByValue, sortDescByValue } from "../../static/util/sort";
 
 interface ContextStateProp {
-    solution: any | string;
-    language: string;
-    theme: string;
-    setLanguage: Function;
-    setTheme: Function;
-    updateSolution: Function;
-    postSolution: Function;
-    setDojoId: Function;
+    solutions: any | IDojoSolution[];
+    setSolutions: Function;
+    getSolutionsByDojoId: Function;
+    sortData: Function;
 }
 
 export const SolutionContext = createContext({} as ContextStateProp);
 
 const SolutionContextProvider = ({ children }: { children: ReactNode }) => {
-    const [solution, setSolution] = useState<any | string>();
-    const [dojoId, setDojoId] = useState<any | string>();
-    const [language, setLanguage] = useState<string>("python");
-    const { isLoggedIn } = useContext(LoginContext);
-    const [theme, setTheme] = useState<string>("monokai");
+    const [solutions, setSolutions] = useState<any | IDojoSolution[]>();
+    const [isDesc, setIsDesc] = useState<boolean>(true);
 
-    useEffect(() => {
-        if (isLoggedIn === true) {
-            axios
-                .get(`/api/solutions/${dojoId}?&language=${language}`)
-                .then((response: AxiosResponse<IDojoSolution>) => {
-                    setSolution(response.data.code);
-                });
-        }
-    }, [isLoggedIn, language, dojoId]);
+    const getSolutionsByDojoId = (id: string) => {
+        const idToNumber = parseInt(id);
 
-    const postSolution = () => {
-        const solutiontoPost = {
-            code: solution,
-            dojoId: parseInt(dojoId),
-            language: language,
-        };
-
-        axios.post("/api/solutions", solutiontoPost).catch((error) => console.log(error));
+        axios.get(`/api/solutions/dojo/${idToNumber}`).then((response: AxiosResponse<IDojoSolution[]>) => {
+            response.data.forEach((solution) => {
+                solution.submissionDate = normalizeDate(solution.submissionDate);
+            });
+            setSolutions(response.data.sort(sortDescByValue("submissionDate")));
+        });
     };
 
-    const updateSolution = useCallback(
-        (s: string) => {
-            setSolution(s);
-        },
-        [setSolution]
-    );
+    const sortData = (value: string) => {
+        isDesc
+            ? setSolutions(solutions.sort(sortAscByValue(value)))
+            : setSolutions(solutions.sort(sortDescByValue(value)));
+
+        setIsDesc(!isDesc);
+    };
 
     return (
-        <SolutionContext.Provider
-            value={{ solution, language, theme, updateSolution, postSolution, setDojoId, setTheme, setLanguage }}
-        >
+        <SolutionContext.Provider value={{ solutions, setSolutions, getSolutionsByDojoId, sortData }}>
             {children}
         </SolutionContext.Provider>
     );

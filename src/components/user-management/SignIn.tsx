@@ -35,7 +35,6 @@ const SignIn = (props: Props) => {
         sessionStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: true }));
         setIsLoggedIn(true);
         setUser(user);
-        console.log(user);
         redirectUser();
     };
 
@@ -60,7 +59,7 @@ const SignIn = (props: Props) => {
                 cookiePolicy={"single_host_origin"}
                 onSuccess={responseGoogle}
                 isSignedIn={true}
-                onFailure={() => history.push("/error")}
+                onFailure={() => {}}
                 uxMode="popup"
             />
         </div>

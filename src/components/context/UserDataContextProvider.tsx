@@ -8,6 +8,7 @@ interface ContextStateProp {
     user: any;
     isLoading: boolean;
     setUser: Function;
+    getUserDataById: Function;
 }
 
 export const UserDataContext = createContext<ContextStateProp>({} as ContextStateProp);
@@ -27,7 +28,15 @@ const UserDataContextProvider = ({ children }: { children: ReactNode }) => {
         }
     }, [isLoggedIn]);
 
-    return <UserDataContext.Provider value={{ user, isLoading, setUser }}>{children}</UserDataContext.Provider>;
+    const getUserDataById = async (id: string) => {
+        return (await axios.get(`/api/user/user/${id}`)).data;
+    };
+
+    return (
+        <UserDataContext.Provider value={{ user, isLoading, setUser, getUserDataById }}>
+            {children}
+        </UserDataContext.Provider>
+    );
 };
 
 export default UserDataContextProvider;

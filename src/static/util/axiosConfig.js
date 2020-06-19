@@ -26,8 +26,6 @@ const errorHandler = (error) => {
     if (isHandlerEnabled(error.config)) {
         if (error.response) {
             if (error.response.status === 500) {
-                console.log(error);
-
                 customHistory.push("/error");
             }
             // The request was made and the server responded with a status code

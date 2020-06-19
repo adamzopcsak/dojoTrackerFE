@@ -7,7 +7,7 @@ interface Props {
 const StatusIndicator = (props: Props) => {
     return (
         <CustomCheckbox>
-            <input type="checkbox" defaultChecked={props.isComplete} disabled data-testid="dojo-checkbox" />
+            <input type="checkbox" defaultChecked={props.isComplete} disabled id="dojo-checkbox" />
             <span></span>
         </CustomCheckbox>
     );

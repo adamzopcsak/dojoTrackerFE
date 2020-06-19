@@ -3,6 +3,7 @@ import { IUserStatistics } from "../../static/util/interfaces";
 import axios from "../../static/util/axiosConfig";
 import { AxiosResponse } from "axios";
 import { sortAscByValue, sortDescByValue } from "../../static/util/sort";
+import { normalizeDate } from "../../static/util/util";
 
 interface ContextStateProp {
     userStats: any | IUserStatistics[];
@@ -34,10 +35,6 @@ const UserStatContextProvider = ({ children }: { children: ReactNode }) => {
             : setUserStats(userStats.sort(sortDescByValue(value)));
 
         setIsDesc(!isDesc);
-    };
-
-    const normalizeDate = (date: string): Date | null => {
-        return date === null ? null : new Date(Date.parse(date));
     };
 
     return (

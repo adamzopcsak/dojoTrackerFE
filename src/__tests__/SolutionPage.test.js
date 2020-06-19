@@ -1,8 +1,8 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
-import { SolutionContext } from "../components/context/SolutionContextProvider";
+import { SolutionContext } from "../components/context/SolutionEditorContextProvider";
 import { MemoryRouter } from "react-router-dom";
-import Solution from "../components/solution/Solution";
+import Solution from "../components/solution/self/Solution";
 import { LoginContext } from "../components/context/LoginContextProvider";
 
 const MockSolutionPage = (props) => {

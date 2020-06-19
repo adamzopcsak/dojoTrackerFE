@@ -4,6 +4,12 @@ import styled from "styled-components";
 
 const StyledLandingPage = styled(Container)`
     padding: 2rem 0;
+
+    h3 {
+        text-align: center;
+        margin: 3rem 0;
+        color: #dc3545;
+    }
 `;
 
 const LandingPage = () => {
@@ -11,6 +17,10 @@ const LandingPage = () => {
         <StyledLandingPage data-testid="landing-readme">
             <h1>Hi Codecooler, and welcome to the Mastery Branch!</h1>
             <div>
+                <h3>
+                    Please note that due to how heroku works the app is put to "sleep" after some time of inactivity. If
+                    this happens and causes errors to appear close the open tab and open new or clear cache and reload!
+                </h3>
                 <p>
                     On this branch, you are going to do a lot of dojos to enhance your knowledge and skills in
                     programming. As these dojos can be found on different sites, tracking your progress is not that easy

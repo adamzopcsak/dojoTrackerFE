@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Container = styled.div`
     display: flex;
@@ -45,6 +45,21 @@ export const CustomLink = styled(Link)`
     }
 `;
 
+export const CustomNavlink = styled(NavLink)`
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+
+    &:focus,
+    &:hover,
+    &:visited,
+    &:link,
+    &:active {
+        text-decoration: none;
+    }
+`;
+
 interface ButtonProps {
     danger?: boolean;
 }
@@ -60,10 +75,21 @@ export const EmptyButton = styled.button`
     cursor: pointer;
     letter-spacing: 0.1rem;
     transition: background-color 0.5s;
+    min-width: 7rem;
 
     &:hover {
         background-color: ${(props) => (props.danger ? "#dc3545" : "#4d4d4d")};
         color: white;
+    }
+
+    &:disabled {
+        opacity: 0.8;
+
+        &:hover {
+            background-color: inherit;
+            color: ${(props: ButtonProps) => (props.danger ? "#dc3545" : "#4d4d4d")};
+            cursor: default;
+        }
     }
 `;
 
@@ -149,5 +175,57 @@ export const HeaderTile = styled.div`
 
     & p:last-child {
         text-align: right;
+    }
+`;
+
+export const StyledCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 25%;
+    height: auto;
+    font-size: 0.9rem;
+    border: 1px solid gray;
+    padding: 2rem;
+    margin: 0.7rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    & p,
+    button {
+        margin: 2rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        width: 80%;
+    }
+`;
+
+export const StyledForm = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 60%;
+
+    & input {
+        width: 50%;
+        height: 20%;
+        padding: 1rem;
+        margin: 1rem;
+        border-radius: 5px;
+        color: gray;
+    }
+
+    & .select {
+        width: 54%;
     }
 `;

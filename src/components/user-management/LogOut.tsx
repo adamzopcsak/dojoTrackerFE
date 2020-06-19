@@ -21,8 +21,9 @@ const LogOut = (props: Props) => {
             sessionStorage.setItem("dta-login-state", JSON.stringify({ isLoggedIn: false }));
             setIsLoggedIn(false);
             setUser(null);
-        });
-        window.location.href = "/";
+            window.location.href = "/";
+            console.log("logging out");
+        });        
     };
 
     return (

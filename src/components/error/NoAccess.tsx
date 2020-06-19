@@ -12,7 +12,7 @@ const NoAccess = () => {
     return (
         <CenteredContainer>
             <h3>You have no access to view this page</h3>
-            <EmptyButton onClick={goBack}>Back</EmptyButton>
+            <EmptyButton onClick={goBack} id={"goback-btn"}>Back</EmptyButton>
         </CenteredContainer>
     );
 };

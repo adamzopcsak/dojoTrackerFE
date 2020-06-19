@@ -11,15 +11,20 @@ export interface IBasicUserInfo {
     email: string;
     firstName: string;
     lastName: string;
-    id: number;
-    rank: number;
+    id: string;
+    nickName: string;
+    preferredLanguage: string;
+    preferredEditorTheme: string;
+    avatarUrl: string;
 }
 
 export interface IDojoSolution {
+    id: number;
     userId: number;
     dojoId: number;
     code: string;
     language: string;
+    submissionDate: any;
 }
 
 export interface IUserStatistics {

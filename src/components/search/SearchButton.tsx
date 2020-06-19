@@ -22,7 +22,7 @@ interface Props {
 
 const SearchButton = (props: Props) => {
     return (
-        <StyledSearchButton>
+        <StyledSearchButton className="search-btn" id="search-btn">
             <FontAwesomeIcon icon={faSearch} onClick={() => props.search()} size="1x" />
         </StyledSearchButton>
     );
