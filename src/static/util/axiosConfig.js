@@ -1,7 +1,7 @@
 import axios from "axios";
 import customHistory from "./customHistory";
 
-const API_URL = "";
+const API_URL = "https://track-that-dojo.herokuapp.com";
 const TIMEOUT = 5000;
 
 const instance = axios.create({
