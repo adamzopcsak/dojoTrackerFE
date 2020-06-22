@@ -61,9 +61,9 @@ const ProfileMenu = (props: Props) => {
             }}
         >
             {isCurrentUser && (
-                <div data-menureference="profile" id="profile-nav-link">
+                <div data-menureference="settings" id="profile-nav-link">
                     <FontAwesomeIcon icon={faUser} size="1x" data-menureference="profile" />
-                    <span data-menureference="profile">Settings</span>
+                    <span data-menureference="settings">Settings</span>
                 </div>
             )}
 
