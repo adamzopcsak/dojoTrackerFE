@@ -8,20 +8,7 @@ import ProfileSolutionTile from "./ProfileSolutionTile";
 import { normalizeDate } from "../../../static/util/util";
 import { sortAscByValue, sortDescByValue } from "../../../static/util/sort";
 import ProfileSolutionHeaders from "./ProfileSolutionHeader";
-
-const StyledProfileData = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    height: 75vh;
-    min-width: 75%;
-    margin: 0 0 0 1rem;
-
-    h3 {
-        color: #dc3545;
-    }
-`;
+import { StyledProfileContainer } from "../../styled-components/Reusables";
 
 interface Props {}
 
@@ -56,7 +43,7 @@ const ProfileSolutions = (props: Props) => {
     };
 
     return (
-        <StyledProfileData>
+        <StyledProfileContainer>
             {userData && (
                 <Fragment>
                     <h3 id="profile-solutions-title">Completed dojos</h3>
@@ -71,7 +58,7 @@ const ProfileSolutions = (props: Props) => {
                         })}
                 </Fragment>
             )}
-        </StyledProfileData>
+        </StyledProfileContainer>
     );
 };
 
