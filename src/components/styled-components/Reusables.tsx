@@ -7,7 +7,7 @@ export const Container = styled.div`
     justify-content: flex-start;
     align-items: center;
     width: 80%;
-    min-height: 80vh;
+    min-height: 90vh;
 
     @media screen and (max-width: 768px) {
         margin-top: 15%;
@@ -103,6 +103,7 @@ export const StickyTile = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white !important;
 `;
 
 export const DataTile = styled.div`
@@ -117,6 +118,7 @@ export const DataTile = styled.div`
     margin: 0.3rem;
     border-radius: 8px;
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
+    background-color: white !important;
 
     &:hover {
         cursor: pointer;
@@ -192,6 +194,7 @@ export const StyledCard = styled.div`
     border-radius: 8px;
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
     text-align: center;
+    background-color: white !important;
 
     &:hover {
         cursor: pointer;
@@ -227,5 +230,19 @@ export const StyledForm = styled.div`
 
     & .select {
         width: 54%;
+    }
+`;
+
+export const StyledProfileContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 75vh;
+    min-width: 75%;
+    margin: 3rem 0 0 1rem;
+
+    h3 {
+        color: #dc3545;
     }
 `;
