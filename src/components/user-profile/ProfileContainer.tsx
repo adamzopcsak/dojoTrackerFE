@@ -4,10 +4,11 @@ import { UserDataContext } from "../context/UserDataContextProvider";
 import { Container, ContainerWithRows } from "../styled-components/Reusables";
 import ProfileCard from "./ProfileCard";
 import ProfileMenu from "./ProfileMenu";
-import ProfileData from "./ProfileData";
 import styled from "styled-components";
 import ProfileSolutions from "./solutions/ProfileSolutions";
 import { ProfilePageContext } from "../context/ProfilePageContextProvider";
+import ProfileSettings from "./settings/ProfileSettings";
+import PageUnderConstruction from "./PageUnderConstruction";
 
 const StyledProfilePage = styled(ContainerWithRows)`
     justify-content: space-between;
@@ -45,9 +46,9 @@ const ProfileContainer = (props: Props) => {
     }, [requestedUserId, user]);
 
     const PROFILE_COMPONENTS: any = {
-        profile: <ProfileData />,
+        settings: <ProfileSettings />,
         solutions: <ProfileSolutions />,
-        statistics: <ProfileData />,
+        statistics: <PageUnderConstruction />,
     };
 
     return (
