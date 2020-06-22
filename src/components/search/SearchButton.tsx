@@ -13,7 +13,6 @@ const StyledSearchButton = styled.button`
     position: absolute;
     top: 20%;
     left: 75%;
-    transition: 1000ms ease;
 `;
 
 interface Props {

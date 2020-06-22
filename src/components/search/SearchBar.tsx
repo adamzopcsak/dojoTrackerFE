@@ -21,9 +21,11 @@ const StyledSearchBar = styled.div`
     border-style: solid;
     position: relative;
     font-weight: bold;
+    transition: 1000ms ease;
 
     &:focus-within {
         background-color: white;
+        border-color: #dc3545;
 
         & > button {
             color: rgb(244, 67, 72);
