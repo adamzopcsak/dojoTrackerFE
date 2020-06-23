@@ -1,5 +1,7 @@
 import React, { ReactNode, createContext, useState } from "react";
 import { IUserStatistics } from "../../static/util/interfaces";
+import axios from "../../static/util/axiosConfig";
+import { AxiosResponse } from "axios";
 
 interface ContextStateProps {
     profileState: string;
@@ -19,7 +21,14 @@ const ProfilePageContextProvider = ({ children }: { children: ReactNode }) => {
 
     return (
         <ProfilePageContext.Provider
-            value={{ profileState, userData, isCurrentUser, setProfileState, setUserData, setIsCurrentUser }}
+            value={{
+                profileState,
+                userData,
+                isCurrentUser,
+                setProfileState,
+                setUserData,
+                setIsCurrentUser,
+            }}
         >
             {children}
         </ProfilePageContext.Provider>
