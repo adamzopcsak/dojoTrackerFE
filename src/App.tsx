@@ -35,9 +35,10 @@ import ProfileContainer from "./components/user-profile/ProfileContainer";
 import ProfilePageContextProvider from "./components/context/ProfilePageContextProvider";
 import ConfirmDelete from "./components/solution/self/ConfirmDelete";
 import NewsPage from "./components/news/NewsPage";
-import IssueReportPage from "./components/news/IssueReportPage";
-import IssueContextProvider, { IssueContext } from "./components/context/IssueContextProvider";
+import IssueReportPage from "./components/misc/IssueReportPage";
+import IssueContextProvider from "./components/context/IssueContextProvider";
 import ReportSuccess from "./components/news/ReportSuccess";
+import SaveSuccess from "./components/user-profile/settings/SaveSuccess";
 
 function App() {
     setup.setupInterceptors();
@@ -93,6 +94,9 @@ function App() {
                                 </PrivateRoute>
                                 <PrivateRoute exact path="/report/success">
                                     <ReportSuccess />
+                                </PrivateRoute>
+                                <PrivateRoute exact path="/user-update-success">
+                                    <SaveSuccess />
                                 </PrivateRoute>
                                 <AdminRoute exact path="/admin/statistics">
                                     <UserStatContextProvider>
