@@ -3,12 +3,13 @@ import { IDojoSolution } from "../../static/util/interfaces";
 import { AxiosResponse } from "axios";
 import axios from "../../static/util/axiosConfig";
 import { LoginContext } from "./LoginContextProvider";
+import { UserDataContext } from "./UserDataContextProvider";
 
 interface ContextStateProp {
     solution: any | string;
-    language: string;
-    theme: string;
-    dojoId: string;
+    language: any | string;
+    theme: any | string;
+    dojoId: any | string;
     setLanguage: Function;
     setTheme: Function;
     updateSolution: Function;
@@ -22,19 +23,23 @@ export const SolutionEditorContext = createContext({} as ContextStateProp);
 const SolutionEditorContextProvider = ({ children }: { children: ReactNode }) => {
     const [solution, setSolution] = useState<any | string>();
     const [dojoId, setDojoId] = useState<any | string>();
-    const [language, setLanguage] = useState<string>("python");
+    const [language, setLanguage] = useState<string>();
+    const [theme, setTheme] = useState<string>();
+
     const { isLoggedIn } = useContext(LoginContext);
-    const [theme, setTheme] = useState<string>("monokai");
+    const { user } = useContext(UserDataContext);
 
     useEffect(() => {
-        if (isLoggedIn === true) {
+        if (user && isLoggedIn === true) {
             axios
                 .get(`/api/solutions/${dojoId}?&language=${language}`)
                 .then((response: AxiosResponse<IDojoSolution>) => {
                     setSolution(response.data.code);
+                    setTheme(user.preferredEditorTheme !== null ? user.preferredEditorTheme : "monokai");
+                    setLanguage(user.preferredLanguage !== null ? user.preferredLanguage : "python");
                 });
         }
-    }, [isLoggedIn, language, dojoId]);
+    }, [isLoggedIn, language, dojoId, user]);
 
     const postSolution = () => {
         const solutiontoPost = {
