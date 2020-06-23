@@ -9,6 +9,7 @@ interface ContextStateProp {
     isLoading: boolean;
     setUser: Function;
     getUserDataById: Function;
+    saveUpdates: Function;
 }
 
 export const UserDataContext = createContext<ContextStateProp>({} as ContextStateProp);
@@ -28,12 +29,16 @@ const UserDataContextProvider = ({ children }: { children: ReactNode }) => {
         }
     }, [isLoggedIn]);
 
+    const saveUpdates = () => {
+        axios.patch("/api/user", user).catch((error) => console.log(error));
+    };
+
     const getUserDataById = async (id: string) => {
         return (await axios.get(`/api/user/user/${id}`)).data;
     };
 
     return (
-        <UserDataContext.Provider value={{ user, isLoading, setUser, getUserDataById }}>
+        <UserDataContext.Provider value={{ user, isLoading, setUser, getUserDataById, saveUpdates }}>
             {children}
         </UserDataContext.Provider>
     );
