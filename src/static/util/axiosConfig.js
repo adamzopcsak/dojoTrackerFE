@@ -2,7 +2,7 @@ import axios from "axios";
 import customHistory from "./customHistory";
 
 const API_URL = "http://localhost:5000";
-const TIMEOUT = 5000;
+const TIMEOUT = 10000;
 
 const instance = axios.create({
     baseURL: API_URL,
