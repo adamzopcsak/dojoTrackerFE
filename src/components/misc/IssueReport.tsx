@@ -4,12 +4,14 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
 const StyledTile = styled.div`
-    margin: 4rem 0;
     width: 100%;
+    height: 4rem;
     position: sticky;
+    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
 `;
 
 interface Props {}
