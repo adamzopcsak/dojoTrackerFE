@@ -2,7 +2,6 @@ import React, { useState, useContext, KeyboardEvent } from "react";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { ProfilePageContext } from "../../context/ProfilePageContextProvider";
 import { UserDataContext } from "../../context/UserDataContextProvider";
 
 const StyledPropfileData = styled.div`

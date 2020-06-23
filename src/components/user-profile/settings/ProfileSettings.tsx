@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { ProfilePageContext } from "../../context/ProfilePageContextProvider";
 import styled from "styled-components";
 import { StyledProfileContainer, EmptyButton } from "../../styled-components/Reusables";
-import ProfileData from "./ProfileData";
 import { useHistory } from "react-router-dom";
 import { UserDataContext } from "../../context/UserDataContextProvider";
+import ProfileData from "./ProfileData";
 
 const StyledProfileSettings = styled(StyledProfileContainer)`
     justify-content: flex-start;
